@@ -3,7 +3,7 @@
 Esta página é do curso de R para iniciantes. O curso é voltado para quem não teve contato com linguagens de programação de nenhum nível ou tem conhecimentos rudimentares sobre  a linguagem. 
 
      
-###Sobre o Curso
+### Sobre o Curso
 
 	
   Este curso é baseado no curso [Using R](http://ecologia.ib.usp.br/bie5782/doku.php?id=start) do curso de Pós Graduação em Ecologia da USP.  
