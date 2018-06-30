@@ -3,7 +3,7 @@
 Esta página é do curso de R para iniciantes. O curso é voltado para quem não teve contato com linguagens de programação de nenhum nível ou tem conhecimentos rudimentares sobre  a linguagem. 
 
      
-### Sobre o Curso
+
 
 
 #### Ementa  
@@ -32,6 +32,37 @@ Este curso tem como objetivo ensinar como estruturar a resolução de problemas 
  
 
 ### Estrutura do curso
+
+O curso é desenvolvido em:
+
+- Aulas presencias no período da manhã.
+- Plantões facultativos no período da tarde.
+- Um tutorial e um exercício prático para cada aula.
+- Tarefas para serem entregues
+
+Este é um curso condensado e exige tempo para realização de exercicios e leituras fora da sala de aula. Por isso, há dias reservados para estudo.
+
+| Segunda   | Terça  | Quarta  | Quinta  | Sexta
+| --------- |--------| ------- | ----    | ----|
+| **Aula I**    |  | **Aula II** |  | **Aula III**
+| Programação, Algoritimos, linguagens| | Operadores matemáticos|  | Manipulação de dados
+| Caracteristicas da linguagem R| | Operadores lógicos   |  | Entrada e saída de dados
+| |   |   |  | Indexação
+|**Prática** ||   ||
+| Install Fest || Tutorial  || Tutorial 
+| "Uma hora de código" || Exercicio || Exercicio
+
+
+| Segunda   | Terça  | Quarta  | Quinta  | Sexta
+| --------- |--------| ------- | ----    | ----|
+| **Aula IV**    |  | **Aula V** |  | **Aula VI**
+| Gráficos| | Programar em R |  | Otimização
+| | | Funções de fluxo  |  | Miscelania
+| | |  Erros de programação  || 
+|**Prática** ||   ||
+| Tutorial || Tutorial  || Tutorial 
+| Exercicio || Exercicio || Exercicio
+
 You can use the [editor on GitHub](https://github.com/tomatebio/R_iniciante/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
