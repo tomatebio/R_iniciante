@@ -4,8 +4,6 @@ Esta página é do curso de R para iniciantes. O curso é voltado para quem não
 
      
 
-
-
 #### Ementa  
 >Introdução a linguagem R, principais características, sintaxe básica, funções matemáticas, funções estatísticas, constantes, manipulação de dados, importação e exportação de dados, coerção de objetos, seleção e filtragem (indexação), gráficos, funções gráficas de baixo e alto nível, introdução a algoritmos e programação, iteração e recursão, programação básica no R, otimização de código, interação com outras linguagens
 
@@ -62,6 +60,17 @@ Este é um curso condensado e exige tempo para realização de exercicios e leit
 |**Prática** ||   ||
 | Tutorial || Tutorial  || Tutorial 
 | Exercicio || Exercicio || Exercicio
+
+
+### Material do Curso 
+
+Todo o material do curso está disponível em um repositório no GitHub. Você pode acessar o repositório atraves desse [link](https://github.com/tomatebio/R_iniciante). 
+
+O Github possui várias funcionalidades que servem muito bem a qualquer projeto de programação principalmente se for colaborativo. Utiliza a tecnologia git  que pode ser melhor entendida nesse [link] (http://rogerdudler.github.io/git-guide/index.pt_BR.html).
+
+Você pode baixar todo o conteudo do curso nesse [link](https://github.com/tomatebio/R_iniciante/archive/master.zip). Recomendo que crie um conta no GitHub (é de graça) e faça um fork. Assim você terá sempre o conteudo atualizado.
+
+
 
 You can use the [editor on GitHub](https://github.com/tomatebio/R_iniciante/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
