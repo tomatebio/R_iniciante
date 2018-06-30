@@ -1,4 +1,10 @@
-## Welcome Curso de R para iniciantes 
+## Bem vindo Curso de R para iniciantes 
+
+
+Pagina do curso de R para iniciantes. 
+
+bjoz 
+
 
 You can use the [editor on GitHub](https://github.com/tomatebio/R_iniciante/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
