@@ -1,9 +1,24 @@
-## Bem vindo Curso de R para iniciantes 
 
 
-Pagina do curso de R para iniciantes. 
+Esta página é do curso de R para iniciantes. O curso é voltado para quem não teve contato com linguagens de programação de nenhum nível ou tem conhecimentos rudimentares sobre  a linguagem. 
 
-bjoz 
+##Sobre o Curso
+
+  Este curso é baseado no curso [Using R](http://ecologia.ib.usp.br/bie5782/doku.php?id=start) do curso de Pós Graduação em Ecologia da USP.  
+**Este é um curso de programação**
+
+Aprender uma linguagem de programação é muito mais que apenas colecionar receitas de códigos e macetes para resolver algumas coisas. É, sobretudo, organizar o pensamento e se habilitar a resolver problemas de modo organizado e robusto. 
+
+Este curso tem como objetivo ensinar como estruturar a resolução de problemas usando uma linguagem de programação. A linguagem escolhida é a linguagem R por ser muito utilizada por experimentalistas que necessitam analisar conjuntos cada vez mais complexos de dados. Entretanto, as habilidades trabalhadas durante o curso tornam o aluno capaz de iniciar o aprendizado em outras linguagens de programação.
+
+**Este não é um curso de Estatística!**
+
+ Apesar do R ser uma linguagem voltada para análises estatísticas este curso não requer conhecimentos prévios em estatística nem se propõe em ensinar estatística.
+ 
+ 
+ O assunto *estatística* é vasto demais para ser coberto em um curso de duas semanas ainda mais se o foco é aprender a programar. É recomendado que o aluno faça cursos de estatística antes ou depois desde curso de R. 
+ 
+ 
 
 
 You can use the [editor on GitHub](https://github.com/tomatebio/R_iniciante/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
