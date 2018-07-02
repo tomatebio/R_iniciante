@@ -1,0 +1,651 @@
+\documentclass{beamer}
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usepackage[latin1]{inputenc}
+%\documentclass[ucs]{beamer}%para sistemas com ucs
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+\usepackage{pgf}
+
+ \usepackage[scaled]{helvet}
+ \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+ \usepackage[T1]{fontenc}
+
+%\usepackage[utf8x]{inputenc}%idem
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usetheme{Unicamp}%
+%\usecolortheme{seagull}
+%\usecolortheme{beaver}
+\usecolortheme{dolphin}
+\usefonttheme[onlysmall]{structurebold}
+
+\title[Linguagem R]{R para iniciantes\\ Aula 1 Introdução }
+\author {Carlos Henrique Tonhatti\\ \and Paula Lemos}
+\institute[Unicamp]{Universidade Estadual de Campinas}
+\date{7 de julho  de 2014}
+
+
+\AtBeginSection[]
+{
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Sumário}
+
+       \tableofcontents[currentsection,currentsubsection]
+       \setcounter{tocdepth}{2}
+   \end{frame}
+}
+
+
+\begin{document}
+%para criar a pagina de rosto
+\frame{\titlepage} %inclui a front page 
+
+\begin{frame}{Motivação}
+  \begin{center}
+    \pgfdeclareimage[width=10cm]{origem}{origem} \pgfuseimage{origem}
+    \end{center}
+
+
+  
+\end{frame}
+%==================================================slide
+% cria o sumario
+\begin{frame}
+ \frametitle{Sumário}
+ \tableofcontents[pausesections]
+  \setcounter{tocdepth}{2}% profundidade do sumario 
+\end{frame}
+%-------------------------------------------------------
+%==================================================slide
+
+%criando um slide
+
+% exemplo figura
+\section{Apresentação da disciplina}
+\begin{frame}
+  \begin{center}
+  \frametitle{Objetivo da disciplina}
+
+  \begin{itemize}
+  \item Apresentar a linguagem R. 
+  \item Introduzir noções básicas de programação.
+  \item Dar autonomia ao aluno para solucionar problemas programando em R. 
+ \end{itemize}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+  \frametitle{Estrutura da disciplina}
+  \begin{itemize}
+  \item Aulas presencias no período da manhã.
+  \item Plantões  facultativos no  período da tarde.
+  \item Um tutorial e um exercício prático para cada aula.
+  \item Tarefas para serem entregues.
+  \end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+  \frametitle{Aulas}
+ 
+  \begin{itemize}
+  \item Aula 1 Introdução ao R.
+  \item Aula 2 Funções matemáticas.
+  \item Aula 3   Manipulação de dados.
+  \item Aula 4  Exploração  de dados.
+  \item Aula 5  Criação de gráficos.
+  \item Aula 6    Programação I.
+  \item Aula 7   Programação II.
+\end{itemize}
+
+\end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+  \frametitle{Tutoriais, exercícios e tarefas}
+  \begin{itemize}
+  \item Material base \url{http://ecologia.ib.usp.br/bie5782/doku.php}
+  \item Material dessa disciplina \url{https://tomatebio.github.io/R_iniciante/}
+  \end{itemize}
+\end{center}
+\end{frame}
+
+
+ \section{Linguagem  R}
+\subsection{Caracteristicas}
+
+ \begin{frame}
+    \frametitle{O que é R}
+   \begin{center}
+
+   \begin{itemize}
+   \item Ambiente de programação: coerente e integrado. 
+   \item Conjunto de ferramentas para manipulação de dados, cálculos e apresentação gráfica.
+   \item Linguagem S (Bell Labs).
+   \end{itemize}
+ \end{center}
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Características do R }
+  \begin{columns}
+    \begin{column}{6cm}
+      \begin{center}
+        \begin{itemize}
+        \item Código aberto: projeto colaborativo.
+        \item Flexibilidade.
+        \item Disponível para Windows, Mac e Linux.
+        \item É orientado a objetos.
+        \item Interface com outras linguagens.
+        \end{itemize}
+      \end{center}
+    \end{column}
+    \begin{column}{6cm}
+    \pgfdeclareimage[width=6cm]{R}{R}
+  \pgfuseimage{R}
+    \end{column}
+  \end{columns}
+
+ \end{frame}
+
+
+ \subsection{Estrutura do R}
+ \begin{frame}
+   \frametitle{Avaliador de expressões}
+   \begin{center}
+      O R avalia as expressões digitadas:
+\pause
+      \[ Ler \rightarrow Analisar ~ ~(sintaxe)  \rightarrow Avaliar \]
+\pause
+     \end{center}
+     O R lê o que foi escrito pelo usuário, analisa o texto como uma expressão e tenta avaliar esta expressão. Normalmente retorna uma resposta na tela.
+ 
+ 
+ \end{frame}
+ \begin{frame}
+   \frametitle{Exemplos}
+          \texttt{
+            > 12,3 \\
+            Erro: ',' inesperado in "12," \\
+\pause
+            > oi \\
+            Erro: objeto 'oi' não encontrado \\
+\pause
+             > 1 \\
+            ~[1] 1 \\ 
+\pause
+            > a=1 \\
+            >}  
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Sintaxe básica}
+   \begin{block}{Sintaxe básica de atribuição}
+     \# Mais usado. \\
+     objeto \textless- expressão  \\ \vspace{10pt}
+    \# Não significa igualdade.\\
+    objeto = expressão \\ \vspace{10pt} 
+    \# Pouco usado.\\
+    expressão -\textgreater objeto \hspace{10pt}        
+   \end{block}
+\pause
+    \texttt{> a<-4\\
+           > a=4 \\
+           > 4->a\\}
+ \pause
+\vspace{8pt}
+ Digite o nome para exibir.
+
+      \texttt{> a \\
+              ~[1] 4}
+ \end{frame}
+
+ \begin{frame}
+ \frametitle{Sintaxe básica}
+ \begin{block}{Sintaxe básica das funções}
+  função(argumento1=valor,argumento2= valor,...)
+ \end{block}
+ \texttt{> plot(x=area,y=peso)\\
+        > plot(y=peso,x=area)\\
+        > plot(area,peso)}
+
+         \vspace{10pt} 
+\pause
+         É diferente de: \\
+       \texttt{ > plot(peso,area)} \\
+\pause
+\vspace{10pt}
+O R interpreta os argumentos pelo nome ou pela posição dentro da expressão. Não é preciso colocar o nome do argumento se a posição for mantida. 
+ \end{frame}
+ \begin{frame}
+   \frametitle{Não esqueça dos parênteses}
+   Mesmo sem argumentos é necessário digitar os parênteses. 
+   \vspace{10pt}
+
+\texttt{\small  > citation()\\
+     \vspace{10pt}
+    To cite R in publications use:\\ 
+    \vspace{10pt}
+  R Core Team (2013). R: A language and environment for statistical 
+  computing. R Foundation for Statistical Computing, Vienna, Austria. \\
+\pause
+\vspace{10pt}
+ > citation \\
+ function (package =  "base", lib.loc = NULL, auto = NULL) \\
+\{ \\
+    if (inherits(auto, "packageDescription")) \{ \\
+    \vdots   
+  } 
+ \end{frame}
+ \begin{frame}
+   \frametitle{Sabendo os argumentos de uma função}
+   \begin{block}{Retorna os argumentos de uma função}
+      args(Nome da função) \\
+       \end{block}
+\pause
+\texttt{> args(ls) \\
+function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
+    pattern) \\
+NULL\\}
+\pause
+\vspace{10pt}
+   Cartão de referência para imprimir que contêm as funções mais usadas.
+
+ Disponível em \url{http://cran.r-project.org/doc/contrib/Short-refcard.pdf}  
+
+\end{frame}
+\begin{frame}
+  \frametitle{Ajuda sobre funções}
+   Felizmente existem várias formas de buscar ajuda sobre as funções.
+   \begin{block}{Funções de ajuda}
+      \# Abre texto de ajuda. \\
+      help(Nome da função)\\
+     ?Nome da função    \\
+     \vspace{10pt}
+      \# Abre a ajuda no navegador.\\
+       help.start() \\
+     \vspace{10pt}
+      \# Busca dentro dos arquivos de ajuda.\\
+        help.search(``palavra-chave'')\\
+        ? ? ``palavra-chave'' \\
+       apropos(``palavra-chave'')
+   \end{block}
+\end{frame}
+\begin{frame}
+  \frametitle{Ajuda online}
+  \begin{description}[<+->]
+    \item[Google] Não funciona muito bem, ``R'' é uma palavra fácil de confundir. Sugestão:\\ \texttt{filetype:R ``palavra-chave'' -rebol}
+      \item[Rseek] Buscador especifico para R. Funciona muito bem. \url{www.rseek.org}
+      \item[Site do R] Os manuais oficiais do R, material produzido por usuários, listas de email.\\
+     \url{http://cran.r-project.org/}  
+  \end{description}
+\end{frame}
+\begin{frame}
+  \frametitle{Outros endereços}
+  \begin{description}[<+->]
+     \item[R-bloggers] Noticias, Tutoriais enviados por usuários.\\
+           \url{http://www.r-bloggers.com}
+     \item[Quick-R] Tutoriais e exemplos curtos.\\
+          \url{http://www.statmethods.net/}
+    \item[Apostila online] Apostila usada no curso da Ecologia da USP. \\
+         \url{http://ecologia.ib.usp.br/bie5782}
+    \end{description}
+\end{frame}
+
+\subsection{Linguagem Orientada a Objetos}
+
+\begin{frame}
+  \frametitle{Linguagem Orientada a Objetos}
+  \begin{block}{Objeto}
+    \begin{quote}
+      It is a location in memory having a \textcolor{red}{value} and referenced by an \textcolor{red}{identifier}. An object can be a variable, function, or data structure.
+      \end{quote}
+\url{http://en.wikipedia.org/wiki/Object_(computer_science)} 
+\end{block}
+\pause
+\texttt{> a<-42}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Objetos pertencem a classes}
+  \begin{block}{Classe}
+    \begin{quote}
+      It is an extensible \textcolor{red}{template for creating
+        objects}, providing initial values for state (member
+      variables) and implementations of \textcolor{red}{behavior} (member functions, methods)
+    \end{quote}
+\url{http://en.wikipedia.org/wiki/Class_(computer_science)}
+
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Principais classes de objetos no R}
+  \begin{itemize}
+    \item Vetores.
+    \item Fatores.
+    \item Matriz.
+    \item Lista.
+    \item \textit{Data frame}.
+    
+  \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Vetor}
+    \begin{block}{\textit{Vector}}
+     É um conjunto de elementos de uma mesma classe
+      (números, caracteres, lógicos, etc) organizados em uma
+      dimensão. Não corresponde aos vetores da álgebra linear.
+    \end{block}
+\vspace{10pt}
+\texttt{a<-4\\
+> Animal<-c(``Cachorro'', ``Gato'', ``Mosquito'')\\
+> Peso<-c(1500,1000,1)\\
+> Pet<-c(TRUE,TRUE,FALSE)\\}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Fatores}
+    \begin{block}{\textit{Factor}}
+     Semelhante aos vetores de R. Os elementos são divididos  em níveis  \textit{levels}. Usado para dados categóricos.      
+    \end{block} 
+\vspace{10pt}
+\texttt{> doce <-factor(c("light","light","diet","diet")) \\
+> doce \\
+~[1] light light diet  diet \\
+Levels: diet light}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Fatores}
+    \begin{block}{Níveis de um fator}
+        \# Retorna os níveis de um fator. \\
+        levels(Nome do fator)
+    \end{block}
+\vspace{10pt}
+\texttt{> levels(doce)\\
+~[1] ``diet''   ``light''}\\
+\vspace{10pt}
+Adicionando um nível que não há na amostra \\ 
+\texttt{> levels(doce)<-c("diet","light","açúcar")\\
+> doce \\
+~[1] light light diet  diet \\
+Levels: diet light açúcar}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Matriz}
+    \begin{block}{\textit{Matrix}}
+     É um vetor com dois atributos adicionais: Número de linhas e colunas. Corresponde a matriz da Álgebra linear. 
+    \end{block}
+\[A_{2,3}= \begin{pmatrix}
+     1 &4 &5 \\
+     3 & 6& 7
+   \end{pmatrix} \]
+\texttt{> A <-matrix(c(1,4,5,3,6,7),nrow=2,ncol=3)\\
+> A <-matrix(c(1,4,5,3,6,7),nrow=2)\\
+> A\\
+  \hspace{20pt} ~[,1]~[,2]~[,3]\\
+~[1,]  ~  1  ~  5 ~   6\\
+~[2,]  ~  4 ~   3  ~  7
+}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Lista}
+    \begin{block}{\textit{List}}
+        É uma coleção de objetos de diferentes classes. Pode conter outras listas.     
+    \end{block}
+\texttt{> lista.qualquer<-list(doce,A)\\
+  > lista.qualquer \\
+ ~[[1]]\\
+~[1] light light diet  diet \\
+Levels: diet light açúcar\\
+\vspace{10pt}
+[[2]]\\
+  \hspace{20pt} ~[,1]~[,2]~[,3]\\
+~[1,]  ~  1  ~  5 ~   6\\
+~[2,]  ~  4 ~   3  ~  7}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Data frame}
+    \begin{block}{\textit{Data frame}}
+     É um tipo especial de lista no qual os componentes tem o mesmo tamanho. Semelhante às planilhas de dados do excel.      
+    \end{block}
+
+\texttt{> Animal<-c(``Cachorro'', ``Gato'', ``Mosquito'')\\
+>  Peso <-c(1500,1000,1)\\
+>  Pet <-c(TRUE,TRUE,FALSE)\\
+> Bichos <-data.frame(Animal,Peso,Pet)\\
+> Bichos\\
+\begin{tabular}{r r r r}
+   &  Animal& Peso&   Pet  \\
+1 & Cahorro& 1500&  TRUE \\
+2 &    Gato& 1000&  TRUE \\
+3 & Mosquito &   1& FALSE \\
+\end{tabular}
+}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Sobre as classes}
+    \begin{block}{Identificando a classe de um objeto}
+      \# Retorna qual a classe de um objeto.\\
+      class(Nome do objeto)\\ \vspace{10pt}
+      \# Retorna \texttt{Verdadeiro} ou \texttt{Falso} para uma determinada classe. \\
+       is.vector(Nome do objeto)\\
+       is.factor(Nome do objeto)\\
+        \vdots 
+         \vspace{10pt}
+        \# Retorna a estrutura de um objeto.\\
+         str(Nome do objeto)
+    \end{block}
+  \end{frame}
+  \begin{frame}
+
+\texttt{\small > class(Bichos)\\
+~[1] "data.frame"\\
+> is.vector(Bichos) \\
+~[1] FALSE \\
+> is.data.frame(Bichos)\\
+~[1] TRUE \\
+\vspace{10pt}
+> str(Bichos)\\
+'data.frame':	3 obs. of  3 variables: \\
+\$ Animal: Factor w/ 3 levels "Cahorro","Gato",..: 1 2 3\\
+\$ Peso ~ : num  1500 1000 1\\
+\$ Pet ~  : logi  TRUE TRUE FALSE}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Listar e Remover}
+    \begin{block}{Listar e remover}
+     \# Lista todos os objetos criados. \\ 
+     ls()\\
+      \# Remove um objeto. Sem recuperação. \\
+      rm(Nome do Objeto)
+    \end{block}
+   \texttt{> ls()\\
+           > rm(Bichos)
+}
+  \end{frame}
+\subsection{Pacotes}
+  \begin{frame}
+    \frametitle{Pacotes}
+    Todas as funções do R são organizadas em pacotes. O pacote \texttt{base} é instalado junto com o R e traz as funções mais básicas.\\
+    \vspace{10pt}
+ Pacotes adicionais estão disponíveis na Internet. Cada pacote adiciona novas funções e métodos e, normalmente são feitos para uma tarefa especifica.\\
+   
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Achando um pacote}
+    \begin{center}
+      Há mais de 5000 pacotes no site oficial do R.
+\vspace{10pt}
+\url{http://www.cran.r-project.org/web/packages/}  
+    
+      \begin{columns}
+        \begin{column}{6cm}
+          \begin{center}
+           Índice alfabético
+
+            \pgfdeclareimage[width=5cm]{pacotesNome}{pacotesNome}
+            \pgfuseimage{pacotesNome}           
+          \end{center}
+
+        \end{column}
+        \begin{column}{6cm}
+          \begin{center}
+           Organizados por tarefa
+
+            \pgfdeclareimage[width=5cm]{taskViews}{taskViews}
+            \pgfuseimage{taskViews}
+          
+          \end{center}
+        \end{column}
+      \end{columns}
+
+\end{center} 
+  \end{frame}
+  \begin{frame}
+    \frametitle{Instalando um novo pacote}
+    \begin{block}{Instalar um novo pacote}
+       install.packages(``Nome do pacote'')
+    \end{block}
+   É necessário carregar o pacote antes de usar as funções.
+   \begin{block}{Carregando um pacote}
+     library(Nome do pacote)\\
+     require(Nome do pacote)
+
+   \end{block}
+  \end{frame}
+\section{Sessão de trabalho no R}
+\begin{frame}
+  \frametitle{Área de trabalho}
+  \begin{center}
+          \pgfdeclareimage[width=6cm]{bancada}{bancada}
+            \pgfuseimage{bancada}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\textit{Workspace}}
+  \begin{center}
+    \pgfdeclareimage[width=12cm]{workspace}{workspace}
+    \pgfuseimage{workspace}
+  \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{Iniciar uma sessão de trabalho}
+  Existem algumas formas diferentes de iniciar uma sessão de trabalho no R:
+  \begin{itemize}
+    \item Clicando no ícone na Área de trabalho (Win/Mac).
+    \item Digitando ``R'' no terminal (Linux/Mac).
+    \item Abrindo arquivos com extensões associadas ao R (.r, .RData, etc
+).
+  \end{itemize}
+  \begin{center}
+    \pgfuseimage{R}
+  \end{center}
+\end{frame}
+ 
+\begin{frame}
+  \frametitle{Encerrando uma sessão de trabalho}
+  \begin{block}{Encerra uma sessão}
+    q()
+  \end{block}
+\texttt{> q()\\
+Save workspace image? [y/n/c]:}
+\vspace{10pt}\\
+Ao encerrar uma sessão o R pergunta se você pretende salvar a área de trabalho. Se responder \texttt{``y''} o R salva uma imagem de toda a área de trabalho num arquivo oculto \textit{.RData} dentro do diretório de trabalho.
+\end{frame}
+\begin{frame}
+  \frametitle{Trabalhando com a imagem da área de trabalho}
+  \begin{block}{Salvando a área de trabalho}
+    \# Salva a área de trabalho no arquivo oculto \textit{.Rdata} sem encerrar a sessão. \\
+     save.image()\\
+    \vspace{10pt}
+    \#  Salva a área de trabalho com o nome que você escolher  sem encerrar a sessão.\\
+     save.image(file=``meuworkspace.RData'')\\
+ \vspace{10pt}
+   \# Carrega um arquivo de área de trabalho. \\
+    load(file=``meuworkspace.RData'')
+  \end{block}
+ É recomendável salvar o trabalho  regularmente.  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Diretório de trabalho}
+  
+    Os arquivos \textit{.RData} são salvos no diretório de trabalho do R. Isso pode gerar problemas pois as novas análises podem sobrescrever as antigas. Por isso:
+    \begin{itemize}
+      \item <1-3>Crie um diretório diferente para cada projeto.
+      \item <2-3> Coloque todos os seus arquivos de dados, planilhas etc nesse diretório.
+     \item<3> Direcione o R para usar o diretório que você criou como diretório de trabalho.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Diretório de trabalho}
+  \begin{block}{Diretório de trabalho}
+    \# Retorna qual diretório de trabalho atual.\\
+     getwd() \\
+    \# Altera o diretório de trabalho.\\
+     setwd()
+  \end{block}
+\end{frame}
+\section{Recomendações}
+\begin{frame}
+  \frametitle{Recomendações para trabalhar com o R}
+  \begin{itemize}
+    \item Use um diretório para cada projeto.
+      \item Salve a área de trabalho regularmente, \texttt{save.image()}.
+      \item Escreva seus comandos em um arquivo de texto.
+      \item Escreva de forma organizada.
+      \item Salve este arquivo no diretório de trabalho com extensão \texttt{.r} ou \texttt{.R}.
+      \item Envie os comandos ao R:
+        \begin{itemize}
+         \item Usando o comando \texttt{source(``arquivo.r'')}. Executa todos os comandos de uma vez.
+         \item Na interface R-GUI do Windows, use o editor de scripts e \texttt{ctrl+R} para enviar linhas ou blocos.
+         \item \textbf{ Use editores próprios para programação em R}.
+        \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Editores próprios para R}
+  
+     Facilitam o trabalho de programação no R. Combinam ferramentas para escrever executar o código de modo mais eficiente. Experimente alguns até achar um que agrade.
+
+     \begin{description}
+     \item[Tinn-R] Editor de códigos brasileiro.\\
+       \url{http://www.sciviews.org/Tinn-R/}\\
+           \item[ESS] \textit{Emacs Speaks Statistics}  Extensão do Emacs para R.\\
+             \url{http://ess.r-project.org/}\\
+           \item[R studio] É uma das melhores opções para começar. \\
+                 \url {http://www.rstudio.com/} 
+     \end{description}
+     Outros podem ser encontrados em \url{http://www.sciviews.org/_rgui/projects/Editors.html}
+\end{frame}
+\begin{frame}
+  \frametitle{Para a próxima aula}
+  \begin{itemize}
+  \item Instalar o R e o R-studio.
+  \item Ler capitulo 1 e 2 da apostila.
+  \item  Fazer os tutoriais ``Introdução ao R'' que estão em \url{http://ecologia.ib.usp.br/bie5782/doku.php?id=bie5782:02_tutoriais:start}
+  \end{itemize}
+  
+\end{frame}
+
+
+\end{document}
+  
