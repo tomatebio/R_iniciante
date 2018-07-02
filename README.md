@@ -38,40 +38,49 @@ O curso é desenvolvido em:
 - Um tutorial e um exercício prático para cada aula.
 - Tarefas para serem entregues
 
-Este é um curso condensado e exige tempo para realização de exercicios e leituras fora da sala de aula. Por isso, há dias reservados para estudo.
+Este é um curso condensado e exige tempo para realização de exercícios e leituras fora da sala de aula. Por isso, há dias reservados para estudo.
 
 | Segunda   | Terça  | Quarta  | Quinta  | Sexta
 | --------- |--------| ------- | ----    | ----|
-| **Aula I**    |  | **Aula II** |  | **Aula III**
-| Programação, Algoritimos, linguagens| | Operadores matemáticos|  | Manipulação de dados
-| Caracteristicas da linguagem R| | Operadores lógicos   |  | Entrada e saída de dados
+| **[Aula I](/AulaI)**    |  | **Aula II** |  | **Aula III**
+| Programação, Algorítimos, linguagens| | Operadores matemáticos|  | Manipulação de dados
+| Características da linguagem R| | Operadores lógicos   |  | Entrada e saída de dados
 | |   |   |  | Indexação
 |**Prática** ||   ||
 | Install Fest || Tutorial  || Tutorial 
-| "Uma hora de código" || Exercicio || Exercicio
+| "Uma hora de código" || Exercício || Exercício
 
 
 | Segunda   | Terça  | Quarta  | Quinta  | Sexta
 | --------- |--------| ------- | ----    | ----|
 | **Aula IV**    |  | **Aula V** |  | **Aula VI**
 | Gráficos| | Programar em R |  | Otimização
-| | | Funções de fluxo  |  | Miscelania
+| | | Funções de fluxo  |  | Miscelânea
 | | |  Erros de programação  || 
 |**Prática** ||   ||
 | Tutorial || Tutorial  || Tutorial 
-| Exercicio || Exercicio || Exercicio
+| Exercício || Exercício || Exercício
 
 
 ### Material do Curso 
 
-Todo o material do curso está disponível em um repositório no GitHub. Você pode acessar o repositório atraves desse [link](https://github.com/tomatebio/R_iniciante). 
+Todo o material do curso está disponível em um repositório no GitHub. Você pode acessar o repositório através desse [link](https://github.com/tomatebio/R_iniciante). 
 
-O Github possui várias funcionalidades que servem muito bem a qualquer projeto de programação principalmente se for colaborativo. Utiliza a tecnologia git  que pode ser melhor entendida nesse [link] (http://rogerdudler.github.io/git-guide/index.pt_BR.html).
+O Github possui várias funcionalidades que servem muito bem a qualquer projeto de programação principalmente se for colaborativo. Utiliza a tecnologia git  que pode ser melhor entendida nesse [link](http://rogerdudler.github.io/git-guide/index.pt_BR.html).
 
 Você pode baixar todo o conteudo do curso nesse [link](https://github.com/tomatebio/R_iniciante/archive/master.zip). Recomendo que crie um conta no GitHub (é de graça) e faça um fork. Assim você terá sempre o conteudo atualizado.
 
 
 
+
+
+
+
+
+
+
+
+     
 You can use the [editor on GitHub](https://github.com/tomatebio/R_iniciante/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
