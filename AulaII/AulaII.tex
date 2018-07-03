@@ -1,0 +1,549 @@
+\documentclass{beamer}
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usepackage[latin1]{inputenc}
+%\documentclass[ucs]{beamer}%para sistemas com ucs
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+\usepackage{pgf}
+
+ \usepackage[scaled]{helvet}
+ \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+ \usepackage[T1]{fontenc}
+
+%\usepackage[utf8x]{inputenc}%idem
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usetheme{Unicamp}%
+\usecolortheme{dolphin}
+%\usecolortheme{seahorse}
+\usefonttheme[onlysmall]{structurebold}
+
+\title[Linguagem R]{R para iniciantes\\ Aula II \\ Funções matemáticas}
+\author {Carlos Henrique Tonhatti}
+%\institute[Unicamp]{Universidade Estadual de Campinas}
+\date{}
+
+
+
+ \AtBeginSection[]
+ {
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Sumário}
+
+       \tableofcontents[currentsection,currentsubsection]
+       \setcounter{tocdepth}{2}
+   \end{frame}
+}
+
+
+\begin{document}
+%para criar a pagina de rosto
+\frame{\titlepage} %inclui a front page 
+
+%==================================================slide
+\begin{frame}
+  \frametitle{Dúvidas da última Aula?}
+\end{frame}
+
+% cria o sumario
+\begin{frame}
+ \frametitle{Sumário}
+ \tableofcontents[pausesections]
+  \setcounter{tocdepth}{2}% profundidade do sumario 
+\end{frame}
+%-------------------------------------------------------
+%==================================================slide
+
+%criando um slide
+
+
+\section{Operações simples}
+\begin{frame}
+  \frametitle{Operadores}
+    Assim como outras linguagens o R possui operadores aritméticos  comparativos, lógicos entre outros. 
+\pause \\
+ Para mais detalhes veja \texttt{?Syntax}
+\end{frame}
+\begin{frame}
+  \begin{center}
+  \frametitle{Operadores}
+    \begin{block}{Operadores aritméticos}
+      \begin{columns}
+        \begin{column}{5cm}
+          \begin{tabular}{c l}
+            +& adição \\
+          -& subtração\\
+          * & multiplicação\\
+           \^~ & potência \\
+         \end{tabular}
+
+        \end{column}
+
+        \begin{column}{5cm}
+          \begin{tabular}{c l}
+          / & divisão\\
+          \%\% &módulo\\
+          \%/\% &divisão de inteiros\\
+        \end{tabular}
+        \end{column}
+      \end{columns}
+    \end{block}
+\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemplos aritméticos}
+\texttt{> 1+2 \\
+~[1] 3\\
+ > 3\^{}3\\
+ ~[1] 9 \\
+> 5/2 \\
+~[1] 2.5 \\ \pause
+> 5\%\%2 \\
+~[1] 1 \\ \pause
+> 5\%/\%2 \\
+~[1] 2\\
+} 
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Operadores}
+  \begin{block}{Operadores de comparação}
+    \begin{columns}
+      \begin{column}{5cm}
+        \begin{tabular}{c l}
+          \textless  & menor que  \\
+          \textgreater  & maior que \\
+          \textless = & menor ou igual\\
+        \end{tabular}
+      \end{column}
+
+
+      \begin{column}{5cm}
+        \begin{tabular}{c l}
+          \textgreater= & maior ou igual\\
+          == & igual\\
+          != & diferente \\
+         \end{tabular}
+       \end{column}
+
+    \end{columns}
+  \end{block}
+Comparam dois objetos e retornam verdadeiro ou falso (\texttt{TRUE, FALSE}).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemplos de comparação}
+ 
+\texttt{> 1\textless 5  \\
+~[1] TRUE \\ \pause
+> 1\textgreater 5 \\
+~[1] FALSE \\ \pause
+> 1==5 \\
+~[1] FALSE \\ \pause
+> 1!=5\\
+~[1] TRUE \\ \pause
+> 5==5 \\
+~[1]TRUE \\
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemplos de comparação}
+  Operadores de comparação podem ser usados sobre caracteres:
+
+\texttt{> "casa"=="casa" \\
+~[1] TRUE\\ \pause
+}
+\vspace{10pt}
+ É usado a ordem alfabética para determinar quem é maior ou menor.
+
+ \texttt{> "a"\textless"z"\\
+~ [1] TRUE \\ \pause
+ > "a"\textless"A" \\
+~[1] TRUE \\ \pause
+ > "aguia"\textless"zebrafish"\\
+~[1] TRUE 
+} 
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Precedência entre operadores}
+ Dentro de uma expressão os operadores de igual precedência são avaliados da esquerda para a direita exceto quando indicados por parênteses. 
+ 
+ \begin{block}{Ordem de precedência}
+    \ldots \^{} ~ \%\%{}~ \%/\%{}~  *{}~ /{}~ +{}~ - \textgreater {}~\textless{}~ \textgreater=~ \ldots 
+ \end{block}
+  Para mais detalhes e outros operadores veja \texttt{?Syntax}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Exemplo ``hipotenusa''}
+      \centering
+      \pgfdeclareimage[width=4cm]{triangulo}{triangulo}
+      \pgfuseimage{triangulo}
+
+      \[hipotenusa^{2} = catetoA^{2} + catetoB^{2} \]
+      \[hipotenusa=\sqrt{catetoA^{2} + catetoB^{2}} \]
+ \end{frame}
+
+\begin{frame}
+  \frametitle{Exemplo ``Hipotenusa''}
+\texttt{> catetoA<- 4\\
+> catetoB<- 3\\ \pause 
+> quad.hipotenusa<- catetoA\^{}2 + catetoB\^{}2\\
+> hipotenusa<- sqrt(quad.hipotenusa)\\ \vspace{10pt}\pause
+OU \vspace{10pt}\\
+> hipotenusa<- sqrt(catetoA\^{}2 + catetoB\^{}2)\\
+> hipotenusa\\
+~[1] 5}
+\end{frame}
+\begin{frame}
+  \frametitle{Arredondamentos}
+  \begin{block}{Funções de arredondamento}
+\texttt{\# Arredonda o número até o número de casas decimais indicado (\textit{default} 0 casas)\\
+round(x, digits=0)\\ \vspace{10pt}
+\# Arredonda o número ``para  cima''.\\
+ceiling(x)\\ \vspace{10pt}
+\# Arrendonda o número ``para baixo''.\\
+floor(x)}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exemplos}
+\texttt{> round(2.718282)\\
+~[1] 3\\ \vspace{10pt}
+> round(2.718282,digits=3)\\
+~[1] 2.718\\ \vspace{10pt}
+> ceiling(2.718282)\\
+~[1] 3\\ \vspace{10pt}
+> floor(2.718282)\\
+~[1] 2}
+  
+\end{frame}
+
+
+
+\section{Operações usando vetores}
+\begin{frame}
+  \frametitle{Criação de vetores}
+
+  \begin{block}{Funções que criam vetores}
+    \# Combina os argumentos em um vetor ou lista.\\
+    c(\ldots) \\ \vspace{10pt} \pause
+    \#  Gera uma sequência regular \\
+    seq(from=1,to=1, by= \ldots)\\
+    from:to \\\vspace{10pt} \pause
+    \# Replica os elementos de um vetor \\
+    rep(x, times)\\ 
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemplos}
+\texttt{> Animal<- c(``Cachorro'', ``Gato'', ``Mosquito'')\\
+> Peso<- c(1500,1000,1)\\ \vspace{10pt} \pause
+> temperatura<- seq(from= 35,to=37,by=.5)\\
+> temperatura\\
+~[1] 35.0 35.5 36.0 36.5 37.0\\ \pause \vspace{10pt}
+> notas<- 0:10 \\
+> notas\\
+ ~[1]  0  1  2  3  4  5  6  7  8  9 10\\ \vspace{10pt} \pause
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemplos}
+\texttt{> conceito<- rep(``A'',5)\\
+> conceito\\
+~[1] ``A'' ``A'' ``A'' ``A'' ``A'' \\ \vspace{10pt}
+> conceitos<- rep(c(``A'',``B''),times=5)\\
+> conceitos\\
+~ [1] ``A'' ``B'' ``A'' ``B'' ``A'' ``B'' ``A'' ``B'' ``A'' ``B''\\ \vspace{10pt}
+> conceitos<- rep(c(``A'', ``B''),each=5)\\
+~[1] ``A'' ``A'' ``A'' ``A'' ``A'' ``B'' ``B'' ``B'' ``B'' ``B''
+}
+\end{frame}
+ \begin{frame}
+  \frametitle{Operações com um vetor }
+
+Operações aplicadas a um vetor normalmente operam em cada do seus elementos.
+
+\texttt{> notas\\
+ ~[1]  0  1  2  3  4  5  6  7  8  9 10\\
+> notas*2\\
+~[1]  0  2  4  6  8 10 12 14 16 18 20 \\}
+ \end{frame}
+
+
+
+ \begin{frame}
+ \frametitle{Operações entre vetores}
+Operações aplicadas entre vetores operam pareando os elementos de ambos os vetores.
+
+\texttt{> a<- c(1,2,3,4,5,6)\\
+> b<- c(6,5,4,3,2,1) \\
+> a+b \\
+~[1] 7 7 7 7 7 7}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Operações entre vetores --- tamanhos diferentes}
+
+   \begin{block}{Regra da ciclagem}
+     Os elementos do vetor mais curto são repetidos sequencialmente
+     até que a operação seja aplicada a todos os elementos do vetor
+     mais longo.
+   \end{block}
+
+\texttt{> a<- c(1,2,3,4,5,6)\\
+> b<- c(0,1) \\
+> a*b \\
+~[1] 0 2 0 4 0 6}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Operações entre vetores --- tamanhos diferentes}
+
+Qaundo o vetor menor não for multiplo do vetor maior a operações e realizada mas aparece um aviso.\\
+\texttt{> a<- c(1,2,3,4,5,6)\\
+> b<- c(0,1,2,3)\\
+> a*b\\
+~[1]  0  2  6 12  0  6\\
+Mensagens de aviso perdidas:\\
+In a * b :\\
+~  comprimento do objeto maior não é múltiplo do comprimento do objeto menor}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Hipotenusas}
+Usando operações entre vetores é possível realizar a mesma operação para vários dados ao mesmo tempo.
+
+\texttt{> catetosA<- c(2,3,4,7,8)\\
+> catetosB<- c(2,5,3,6,5)\\
+> hipotenusas<- sqrt(catetosA\^{}2 + catetosB\^{}2)\\
+> hipotenusas\\
+~[1] 2.828427 5.830952 5.000000 9.219544 9.433981}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Funções que operam sobre todo o vetor}
+
+Algumas funções operam sobre todos os elementos do vetor.
+\\
+\texttt{> a< c(1,2,3,4,5,6,7,8,9)\\\vspace{10pt}
+\# soma\\
+> sum(a)\\
+~[1] 45\\ \vspace{10pt}
+\# média\\
+> mean(a)\\
+~[1] 5\\ \vspace{10pt}
+\# diferença entre elementos\\ 
+> diff(a)\\
+~[1] 1 1 1 1 1 1 1 1\\ \vspace{10pt} \pause
+}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Funções que operam sobre todo o vetor}
+\texttt{\# soma cumulativa\\
+> cumsum(a)\\
+~[1]  1  3  6 10 15 21 28 36 45\\ \vspace{10pt} \pause
+\# produto cumulativo \\
+> cumprod(a) \\
+~[1]      1      2      6     24    120    720   5040  40320 362880\\} \vspace{10pt} \pause
+
+Outras funções que operam sobre todo o vetor: \\ \texttt{var,sd,min,max,range \ldots}
+ \end{frame}
+ 
+
+\section{Operações usando matrizes}
+\begin{frame}
+  \begin{center}
+  \frametitle{Operadores}
+    \begin{block}{Operações com matriz}
+       \begin{tabular}{c l}
+            + & soma elemento por elemento\\
+            *& multiplicação elemento por elemento \\
+          \%*\%& multiplicação entre matrizes \\
+         \end{tabular}
+     \end{block}
+\end{center}  
+\end{frame}
+
+ \begin{frame}
+ \frametitle{Funções com matriz}
+
+ \begin{block}{Funções com matrizes}
+ Sendo \textbf{A} uma matriz \\ \vspace{10pt} \pause
+ \# Matriz transposta\\
+ t(A)  \\ \vspace{10pt} \pause
+ \# Diagonal  \\
+ diag(A)  \\ \vspace{10pt} \pause
+ \# Autovalores e autovetores \\
+eigen(A)
+    \end{block}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Exemplos}
+\texttt{> A\\
+\begin{tabular}{c c c c}
+ &  [,1]&[,2] & [,3]\\
+~[1,]&   1  &  4 &   7\\
+~[2,] &  2  & 5 &   8\\
+~[3,]  &  3 &    6 &   9\\
+\end{tabular}\\ \vspace{10pt}
+> t(A)\\
+\begin{tabular}{c c c c}
+   &  [,1]& [,2]& [,3]\\
+~[1,] &   1 &   2 &   3\\
+~[2,] &   4 &   5  &  6\\
+~[3,] &   7 &   8  &  9\\
+\end{tabular} \\ \vspace{10pt}
+> diag(A)\\
+~[1] 1 5 9\\}
+\end{frame}
+
+ \begin{frame}
+  
+\texttt{> eigen(A)\\
+ \$values \\
+~[1] 1.611684e+01 -1.116844e+00 -5.700691e-16\\ \vspace{10pt}
+ \$vectors \\
+ \begin{tabular}{c c c c}
+&[,1]& [,2]& [,3]\\ 
+~[1,] &-0.4645473 &-0.8829060 &0.4082483 \\
+~[2,] & -0.5707955& -0.2395204 &-0.8164966 \\
+~[3,] &-0.6770438 &0.4038651 &0.4082483\\
+\end{tabular}}
+ \end{frame}
+\begin{frame}
+  \frametitle{Dados faltantes}
+
+No R dados faltantes são representados por \texttt{NA} (\textit{`` Not Available''}).
+
+\texttt{> x<- c(2,4,5,NA)\\ 
+    > mean(x)\\ \pause
+    ~[1] NA \\ \pause
+     > mean(x, na.rm=T)\\
+~[1] 3.666667}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Valores infinitos}
+
+No R valores infinitos são representados por \texttt{Inf}.
+
+\texttt{>1/0 \\
+~[1] Inf \\
+>1/Inf \\
+~[1] 0}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Valores indefinidos}
+
+No R valores que não podem ser definidos são representados por \texttt{NaN} (``Not a Number'').
+
+\texttt{> 0/0\\
+       ~[1] NaN\\ 
+       > sqrt(-1)\\
+        ~[1] NaN}
+
+ \end{frame}
+\section{Operações usando outras classes}
+\begin{frame}
+  \frametitle{Operações com outras classes}
+ Para aplicar operações e funções sobre objetos de outras classes (fatores, \textit{data frames}, listas, \textit{arrays}, etc) é necessário o uso de uma função  auxiliar.
+
+\pause \vspace{10pt}
+Existem várias funções e métodos para isso.
+   
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algumas funções  auxiliares}
+  \begin{block}{Funções auxiliares}
+    \#   Aplica uma função sobre \textit{array} ou matriz.\\
+    apply(X, MARGIN, FUN, \dots)     \\ \vspace{10pt} \pause
+    \# Aplica uma função sobre uma lista ou vetor.\\
+     lapply(X, FUN, \ldots) \\  \vspace{10pt} \pause
+    \#  Aplica uma função sobre um vetor agrupado por fatores.\\
+    tapply(X, INDEX, FUN,\dots)\\  \vspace{10pt} \pause
+     X= objeto\\
+ MARGIN = dimensão na qual será aplicada a função (1 para linha e 2 para coluna)\\
+ INDEX= fator usado para agrupar\\
+ FUN = função principal
+  \end{block} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemplos}
+\texttt{> notas<-matrix(c(5,6,4,9,9,7,4,3,2),ncol=3)\\
+> notas\\
+\begin{tabular}{c c c c}
+    & [,1]& [,2]& [,3]\\
+~[1,] &   5  &  9 &   4\\
+~[2,]  &  6 &   9  &  3\\
+~[3,]   & 4&    7   & 2\\
+\end{tabular}
+\\ \pause \vspace{10pt}
+> apply(X=notas, MARGIN=1, FUN=mean)\\
+~[1] 6.000000 6.000000 4.333333
+ } \\ \pause
+
+No caso de médias por linha ou por coluna é mais fácil usar \texttt{rowMeans()} ou \texttt{colMeans()}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemplos}
+\texttt{> notas<-list(aluno1=c(5,6,8),aluno2=c(4,5))\\
+> notas\\
+\$aluno1\\
+~[1] 5 6 8\\
+\$aluno2\\
+~[1] 4 5\\ \vspace{10pt}
+> lapply(notas,mean)\\
+\$aluno1\\
+~[1] 6.333333\\
+\$aluno2\\
+~[1] 4.5\\}
+\end{frame}
+\begin{frame}
+\frametitle{Exemplos}
+\texttt{> idade<- c(25,26,55,37,21,42)\\
+> sexo<- c(``F'', ``F'', ``M'', ``F'', ``M'', ``M'')\\
+> tapply(X=idade, INDEX=sexo, FUN=mean)\\
+\begin{tabular}{r r}
+       F &       M \\
+29.33333& 39.33333\\
+\end{tabular}
+} 
+\end{frame}
+
+\begin{frame}{Para a próxima aula}
+  \begin{itemize}
+  \item Ler o cap. 3 da apostila
+  \item Fazer o tutorial 2 ``Funções matemáticas''
+  \item Fazer os exercícios ``Funções matemáticas''
+  \end{itemize}
+  
+\end{frame}
+\end{document}
+  
