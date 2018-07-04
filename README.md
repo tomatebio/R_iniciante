@@ -42,7 +42,7 @@ Este é um curso condensado e exige tempo para realização de exercícios e lei
 
 | Segunda   | Terça  | Quarta  | Quinta  | Sexta
 | --------- |--------| ------- | ----    | ----|
-| **[Aula I](https://github.com/tomatebio/R_iniciante/tree/master/AulaI)**    |  | **[Aula II](https://github.com/tomatebio/R_iniciante/tree/master/AulaII)** |  | **Aula III**
+| **[Aula I](https://github.com/tomatebio/R_iniciante/tree/master/AulaI)**    |  | **[Aula II](https://github.com/tomatebio/R_iniciante/tree/master/AulaII)** |  | **[Aula III]](https://github.com/tomatebio/R_iniciante/tree/master/AulaIII)**
 | Programação, Algorítimos, linguagens| | Operadores matemáticos|  | Manipulação de dados
 | Características da linguagem R| | Operadores lógicos   |  | Entrada e saída de dados
 | |   |   |  | Indexação

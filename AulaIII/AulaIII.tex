@@ -1,0 +1,487 @@
+\documentclass{beamer}
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usepackage[latin1]{inputenc}
+%\documentclass[ucs]{beamer}%para sistemas com ucs
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+\usepackage{pgf}
+
+ \usepackage[scaled]{helvet}
+ \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+ \usepackage[T1]{fontenc}
+
+%\usepackage[utf8x]{inputenc}%idem
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usetheme{Unicamp}%
+\usecolortheme{dolphin}
+%\usecolortheme{seahorse}
+\usefonttheme[onlysmall]{structurebold}
+
+\title[Linguagem R]{R para iniciantes\\ Aula III Leitura e Manipulação de dados}
+\author {Carlos Henrique Tonhatti}
+%\institute[Unicamp]{Universidade Estadual de Campinas}
+\date{}
+
+
+
+ \AtBeginSection[]
+ {
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Sumário}
+
+       \tableofcontents[currentsection,currentsubsection]
+       \setcounter{tocdepth}{2}
+   \end{frame}
+}
+
+
+\begin{document}
+%para criar a pagina de rosto
+\frame{\titlepage} %inclui a front page 
+
+%==================================================slide
+\begin{frame}
+  \frametitle{Dúvidas da última Aula?}
+\end{frame}
+
+% cria o sumario
+\begin{frame}
+ \frametitle{Sumário}
+ \tableofcontents[pausesections]
+  \setcounter{tocdepth}{2}% profundidade do sumario 
+\end{frame}
+%-------------------------------------------------------
+%==================================================slide
+
+%criando um slide
+
+
+\section{Entrando  e saindo com dados do R}
+\begin{frame}{Formas de entrada de dados.}
+\centering
+   Existem algumas formas de entrar com dados no R: \vspace{10pt}
+   \begin{itemize}
+   \item Digitando diretamente no terminal (como foi feito nas últimas aulas).
+   \item Importando os dados de outras fontes (arquivos, internet).
+   \end{itemize}
+  \end{frame}
+\subsection{Importação de dados}
+  \begin{frame}{Importação de dados}
+   
+   A importação de dados no R depende do tipo e formato dos dados que se pretende importar. A função genérica \texttt{read.table} importa dados em formato de tabela.
+   \begin{block}{Importação de dados}
+    read.table(file, header = FALSE, sep = "", quote = "\"'",\\
+   \hspace{45pt}       dec = ".", row.names, col.names,\\
+   \hspace{45pt}       as.is = !stringsAsFactors,\\
+   \hspace{45pt}       na.strings = "NA", colClasses = NA, nrows = -1,\\
+   \hspace{45pt}       skip = 0, check.names = TRUE, fill = !blank.lines.skip,\\
+   \hspace{45pt}             strip.white = FALSE, blank.lines.skip = TRUE,\\
+   \hspace{45pt}             comment.char = "\#",\\
+   \hspace{45pt}             allowEscapes = FALSE, flush = FALSE,\\
+   \hspace{45pt}             stringsAsFactors = default.stringsAsFactors(),\\
+   \hspace{45pt}             fileEncoding = "", encoding = "unknown", text)     
+   \end{block}
+    
+  \end{frame}
+  \begin{frame}{Exemplo}
+Passo 1 - Salvar os dados em txt.
+\centering
+   \pgfdeclareimage[width=10cm]{rExcel}{rExcel}
+    \pgfuseimage{rExcel}
+ \end{frame}
+ \begin{frame}{Exemplo}
+Passo 2 - Salvar o arquivo na pasta de trabalho do R. \pause
+\pause
+Passo 3 - Importar o arquivo \\
+\texttt{> trapa<- read.table(``trapa.txt'',header= TRUE, sep= `` '', dec= ``.'')\\}
+Passo 4- Verificar o que foi importado
+\texttt{\\
+> trapa
+\begin{table}[!h] 
+\begin{tabular}{cccccc} 
+ & codinome & nascimento & estado & vivo & altura \\ 
+~[1,] & Didi & 1936 & CE & s & 1.68 \\ 
+~[2,] & Dede & 1936 & RJ & s & 1.79 \\ 
+~[3,] & Mussum & 1941 & RJ & n & 1.81 \\ 
+~[4,] & Zacarias & 1934 & MG & n & 1.61 \\ 
+\end{tabular} 
+\end{table} 
+ }   
+ \end{frame}
+ \begin{frame}{Considerações}
+    \begin{itemize}
+ \item O passos do exemplo podem variar devido á complexidade dos
+   dados;
+ \item O objeto criado é um \texttt{data.frame};
+ \item Importante é entender  como os dados estão organizados antes de importar;
+ \item  A função \texttt{read.table} é flexível. Pode ser ajustada á vários formatos de dados.\pause   Principais argumentos:
+   \begin{description}
+   \item [file] nome do arquivo o qual tem os dados,
+   \item [header] indica se a primeira linha contem os títulos das colunas,
+   \item[sep] indica qual o separador de campos,
+   \item[dec] indica qual simbolo é usado para separar decimais.
+   \end{description}
+\pause
+ \texttt{read.table(``trapa.txt'',header= TRUE, sep= `` '', dec= ``.'')}
+\pause
+Mais informações em \texttt{?read.table}
+ \end{itemize}
+ \end{frame}
+ \begin{frame}{Dicas}
+Estabeleça um padrão para os seus dados: \pause
+\begin{itemize}
+\item Qual separador de campo (TAB, ``,'', ``;'')?
+\item Qual simbolo para decimais (``.'', ``,'')?
+\item Nome das variáveis na colunas?
+\end{itemize}
+\pause
+Confira se os dados foram lidos de forma correta. Use os comandos file\texttt{ str(), dim(), head(), tail()}
+ \end{frame}
+
+\subsection{Exportando dados}
+\begin{frame}{Exportando dados do R}
+ A exportação de dados do R pode ser feita de várias formas. A função genérica  \texttt{write.table} exporta os dados em forma de \textit{data frame} criando um novo arquivo.
+ \begin{block}{Exportação de dados}
+ write.table(x, file = `` '', append = FALSE, quote = TRUE, sep = `` '',\\
+     \hspace{45pt}  eol = ``\textbackslash n'', na = ``NA'', dec = ``.'', row.names = TRUE,\\
+     \hspace{45pt}    col.names = TRUE, qmethod = c(``escape'', ``double''),\\
+      \hspace{45pt}            fileEncoding = `` '')   
+ \end{block}
+\texttt{> write.table(trapa, file=``trapa2.txt'')}
+  
+\end{frame}
+
+\section{Manipulando dados}
+\subsection{Edição}
+\begin{frame}{Edição}
+ A função \texttt{fix()} abre o objeto dentro de uma planilha possibilitando pequenas edições. \\
+\centering
+\pgfdeclareimage[width=5cm]{fix}{fix}
+\pgfuseimage{fix}  
+\end{frame}
+
+
+\begin{frame}{Edição: nomes de colunas e linhas}
+
+\begin{block}{Nomes das colunas e linhas}
+\# Retorna o nome das colunas\\
+names(x)\\
+colnames(x)\\
+\# Retorna o nome das linhas\\
+rownames(x)\\
+ \end{block}
+\end{frame}
+
+\begin{frame}{Exemplo}
+\texttt{> names(trapa)\\
+~[1]  ``codinome''   ``nascimento'' ``estado''   ``vivo''  ``altura''}\vspace{10pt}
+
+É possível alterar o nome das colunas ou linhas usando a mesma função:\\ \vspace{10pt}
+
+\texttt{> names(trapa)<-c(``COD'', ``NASC'', ``UF'', ``VIVO'', ``Altura'')}
+
+\begin{table}[!h]  
+ \begin{tabular}{ cccccc} 
+ & COD & NASC & UF & VIVO & Altura \\ 
+~[1,] & Didi & 1936 & CE & s & 1.68 \\ 
+~[2,] & Dede & 1936 & RJ & s & 1.79 \\ 
+~[3,] & Mussum & 1941 & RJ & n & 1.81 \\ 
+~[4,] & Zacarias & 1934 & MG & n & 1.61 \\ 
+\end{tabular} 
+\end{table}
+\end{frame}
+
+\subsection{Criação de subconjuntos}
+\begin{frame}{Subconjuntos}
+\centering
+\pgfdeclareimage[width=10cm]{subconjunto}{subconjunto}
+\pgfuseimage{subconjunto}
+\pause
+Sinônimo de indexação.  
+\end{frame}
+
+\begin{frame}{Subconjuntos: vetores}
+
+  \begin{center}
+    \pgfdeclareimage[width=6cm]{vetor}{vetor} \pgfuseimage{vetor}
+  \end{center}
+
+
+\texttt{> animal<-c( ``peixe'' ,``cão'',``gato'',``hamster'')}  
+\pause
+
+\texttt{> animal[2]\\
+~[1] ``cão''\\ \pause
+> animal[c(2,3)]\\
+~[1] ``cão''  ``gato''\\
+> animal[2:4]\\
+~[1] ``cão''     ``gato''    ``hamster''}
+\end{frame}
+
+\begin{frame}{Subconjuntos: vetores}
+\texttt{> animal<-c( ``peixe'' ,``cão'',``gato'',``hamster'')\\}  
+\pause
+\texttt{> animal[c(1,1,2,3)]\\
+~[1] ``peixe'' ``peixe'' ``cão''   ``gato'' \\ \pause
+> animal[-2]\\
+~[1] ``peixe''   ``gato''  ``hamster''\\
+  }
+\end{frame}
+
+\begin{frame}{Subconjuntos: matrizes e \textit{data.frame}}
+Matrizes e \textit{data.frames} possuem 2 dimensões.
+
+\begin{block}{Subconjunto em uma matriz}
+matriz[linha, coluna]  
+\end{block}
+\texttt{> x<-matrix(1:12,ncol=3)\\
+> x}
+\begin{table}[h]  
+ \begin{tabular}{cccc} 
+ & [,1] &[,2]&[,3] \\
+~[1,]& 1& 5& 9 \\
+~[2,] &   2 &   6 &  10\\
+~[3,] &   3  &  7 &  11\\
+~[4,] &   4  &  8 &  12\\
+\end{tabular} 
+\end{table} 
+
+\texttt{> x[2,2]\\
+~[1] 6}
+\end{frame}
+
+\begin{frame}{Subconjuntos: matrizes e \textit{data.frame}}
+\texttt{
+  > x[2:4,2:3]\\
+\begin{table}[h]  
+ \begin{tabular}{cccc} 
+    & [,1]& [,2]\\
+~[1,]  &  6  & 10\\
+~[2,]  &  7 &  11\\
+~[3,]  &  8&   12\\
+\end{tabular} 
+\end{table}} \pause
+Todas as colunas de uma linha\\
+\texttt{> x[1,]\\
+~[1] 1 5 9}\\ \pause
+Todas as linhas de uma coluna\\
+\texttt{> x[,1]\\
+~[1] 1 2 3 4}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Subconjunto: nomes das colunas em \textit{data.frame}}
+  É possível usar o nome da coluna de  um \texttt{data.frame}. 
+  \begin{block}{Seleção do  conteúdo de uma coluna}
+   objeto\textbf{\$}coluna\\   
+  \end{block}
+\texttt{> trapa\$COD\\
+~[1] Didi     Dede     Mussum   Zacarias\\
+Levels: Dede Didi Mussum Zacarias\\
+> trapa\$NASC\\
+~[1] 1936 1936 1941 1934\\}
+  \end{frame}
+
+  \begin{frame}{Subconjunto: nomes das colunas em \textit{data.frame}}
+É possível alterar o conteúdo de uma coluna
+
+\texttt{> trapa\$VIVO<-c(``T'', ``T'', ``F'', ``F'')} \pause \vspace{10pt}
+
+E criar novas colunas
+
+\texttt{> trapa\$idade<- 2014-trapa\$NASC}
+
+\texttt{\begin{table}[!h]
+\begin{tabular}{ ccccccc} 
+  & COD & NASC & UF & VIVO & Altura & idade \\ 
+~[1,] & Didi & 1936 & CE & T & 1.68 & 78 \\ 
+~[2,] & Dede & 1936 & RJ & T & 1.79 & 78 \\ 
+~[3,] & Mussum & 1941 & RJ & F & 1.81 & 73 \\ 
+~[4,] & Zacarias & 1934 & MG & F & 1.61 & 80 \\ 
+\end{tabular} 
+\end{table}}
+  \end{frame}
+
+
+\begin{frame}{Subconjuntos: listas}
+\texttt{> aluno<-list(nome= ``José'', idade=20, esportes=c(``natação'', ``surfe''))\\ \pause
+> aluno\\
+\$nome\\
+~[1] ``José''\\
+\vspace{10pt}
+\$idade\\
+~[1] 20\\
+\vspace{10pt}
+\$esportes\\
+~[1] ``natação'' ``surfe''}
+\end{frame}
+
+\begin{frame}{Subconjuntos: listas}
+\texttt{> aluno\$esportes\\
+~[1] ``natação'' ``surfe'' \\ \vspace{10pt} \pause
+> aluno[3]\\
+\$esportes\\
+~[1] ``natação'' ``surfe'' \\ \vspace{10pt} \pause
+> aluno[[3]]\\
+~[1] ``natação'' ``surfe'' }
+
+\end{frame}
+
+\begin{frame}{Subconjuntos: listas}
+\texttt{> aluno\$esportes\\
+~[1] ``natação'' ``surfe'' \\ \vspace{10pt} \pause
+> aluno\$esportes[1]\\
+~[1] ``natação''\\ \vspace{10pt} \pause
+> aluno[[3]][1]\\
+~[1] ``natação''}  
+\end{frame}
+\subsection{Criação de filtros}
+\begin{frame}{Usando filtros}
+Um filtro é uma condição lógica que permite selecionar dados.\\
+Para isso é usado os operadores comparação e lógicos. \\
+\begin{block}{Operadores lógicos}
+\begin{table}[!h]
+\begin{tabular}{cc} 
+\& \&\&& E \\
+| || & OU \\
+!& Negação \\
+\end{tabular} 
+\end{table}  
+\end{block}  
+\end{frame}
+
+\begin{frame}{Exemplos}
+\texttt{> z<-c(1,2,3,4,5,6,7,8)\\ \vspace{10pt}
+> z>3\\
+~[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE \\ \vspace{10pt}
+> z[z>3]\\
+~[1] 4 5 6 7 8 \\ \vspace{10pt} \pause
+> z>3 \& z<7\\
+~[1] FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE\\
+> z[z>3 \& z<7] \\
+~[1] 4 5 6
+}
+\end{frame}
+\begin{frame}{Exemplos}
+
+\texttt{> Altura\\
+~[1] 1.85 1.78 1.92 1.63 1.81 1.55\\
+> Sexo\\
+~[1] M M M F F F\\
+Levels: F M\\ \vspace{10pt} \pause
+> homens.altos<- Altura >= 1.80 \& Sexo== ``M''\\
+> homens.altos\\
+~[1]  TRUE FALSE  TRUE FALSE FALSE FALSE}
+ \end{frame}
+
+ \begin{frame}{Exemplos}
+\texttt{ > homens.altos \\
+~[1]  TRUE FALSE  TRUE FALSE FALSE FALSE \\ \vspace{10pt}}
+Quantos homens altos existem?\\
+\texttt{> sum(homens.altos)\\
+~[1] 2\\}
+Proporção de homens altos \\
+\texttt{> mean(homens.altos)\\
+~[1] 0.3333333\\}
+ \end{frame}
+
+ \begin{frame}{Exemplos}
+ \texttt{> ilhas}\\
+ \begin{table}[!h]
+\begin{tabular}{ccccc} 
+   &[,1]&[,2]&[,3]&[,4]\\
+~[1,]  &  3  &  2 &   0  &  2\\
+~[2,]  &  1  &  0 &   0  &  2\\
+~[3,]  &  1  &  1 &   1  &  0\\
+~[4,]  &  1  &  2 &   2  &  0\\
+~[5,]  &  1  &  1 &   2  &  2\\
+ \end{tabular} 
+\end{table}
+
+\texttt{> ilhas>1 \\}
+ \begin{table}[!h]
+\begin{tabular}{ccccc}
+     & [,1]&  [,2]&  [,3] & [,4]\\
+~[1,]&  TRUE & TRUE & FALSE & TRUE\\
+~[2,]& FALSE &FALSE & FALSE & TRUE\\
+~[3,]& FALSE &FALSE & FALSE & FALSE\\
+~[4,]& FALSE & TRUE & TRUE & FALSE\\
+~[5,]& FALSE &FALSE & TRUE & TRUE\\
+ \end{tabular} 
+\end{table}
+ \end{frame}
+
+ \begin{frame}{Exemplos}
+\texttt{ > apply(ilhas>1,2,sum)\\
+~[1] 1 2 2 3}
+ \end{frame}
+
+\subsection{Ordenação}
+\begin{frame}{Ordenação}
+Ordenação é o ato de se colocar os elementos de uma sequência de informações, ou dados, em uma ordem predefinida.
+
+\begin{block}{Funções de ordenação}
+\# Ordena o vetor\\
+sort(x, decreasing=FALSE) \\ \vspace{10pt}
+\# Retorna os indices ordenados \\
+order(x, decreasing=FALSE) \\ \vspace{10pt}
+\end{block}
+  
+\end{frame}
+
+\begin{frame}{Exemplos}
+\texttt{> sort(Altura)\\
+~[1] 1.55 1.63 1.78 1.81 1.85 1.92\\ \vspace{10pt} \pause
+> order(Altura)\\
+~[1] 6 4 2 5 1 3 \\ \vspace{10pt} \pause
+> Altura[order(Altura)]\\
+~[1] 1.55 1.63 1.78 1.81 1.85 1.92\\
+>Altura.Crescente<-Altura[order(Altura)]}  
+\end{frame}
+\begin{frame}{Cuidado ao ordenar matrizes/\textit{data.frames}}
+\centering
+\pgfuseimage{subconjunto}  
+\end{frame}
+
+\begin{frame}{Mantendo a relação entre as colunas}
+\texttt{> order(trapa\$COD)\\
+~[1] 2 1 3 4\\ \vspace{10pt}
+> Em.ordem<-order(trapa\$COD)\\ \pause
+> trapa.em.ordem<-trapa[Em.ordem,]\\
+> trapa.em.ordem}
+ \begin{table}[!h]
+\begin{tabular}{cccccc}
+      & COD & NASC & UF & VIVO & Altura\\
+2 &    Dede & 1936 &  RJ&    s &  1.79\\
+1 &    Didi & 1936 & CE &   s &  1.68\\
+3 &  Mussum & 1941 & RJ &   n  & 1.81\\
+4 &Zacarias  & 1934 & MG &    n &  1.61\\
+\end{tabular}
+\end{table}
+  \end{frame}
+
+  \begin{frame}{Próxima aula}
+    \begin{itemize}
+    \item Ler cap. 4 da apostila.
+    \item  Fazer tutorial ``Leitura e manipulação de dados''.
+    \item  Fazer exercícios para entregar.
+    \end{itemize}
+  \end{frame}
+
+\end{document}
+  
