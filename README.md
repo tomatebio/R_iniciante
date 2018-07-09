@@ -71,10 +71,60 @@ O Github possui várias funcionalidades que servem muito bem a qualquer projeto 
 Você pode baixar todo o conteudo do curso nesse [link](https://github.com/tomatebio/R_iniciante/archive/master.zip). Recomendo que crie um conta no GitHub (é de graça) e faça um fork. Assim você terá sempre o conteudo atualizado.
 
 
+### Atividades swirl
+
+Para facilitar a correção e acompanhamento das tarefas este curso vai fazer uso do pacote swirl. Para instala-lo:
 
 
+```r
+# instalar o pacote swirl e outros pacotes necessários.
+
+install.packages("swirl")
+install.packages("googlesheets")
+install.packages("base64enc")
+install.packages("httr")
+
+# instalar o curso
+library(swirl)
+install_course_github("tomatebio","Programando_em_R")
+
+```
+```r
+# Para fazer um exercicio
+swirl()
+
+# o Programa vai pedir o teu nome e depois de algumas telas de apresentação vai aparecer
+
+1: Programando em R
+2: Take me to the swirl course repository!
+
+# Escolha 1 e depois:
+
+| Please choose a lesson, or type 0 to return to
+| course menu.
+
+1: Blocos Básicos
+2: Espaço de Trabalho e Arquivos
+3: Sequências Numéricas
+4: Teste
+5: Vetores
+
+# Escolha 1- blocos basicos e siga as orientações e mais a frente...
+
+| Enviar log para instrutor? digite 1.
+
+# digite 1 e aguarde, se for a primeira vez que esta usando o sistema ele vai abrir uma janela no navegador para que você autorize o acesso pelo google para manter o log. Aceite
 
 
+# No final vc deve ver a seguinte mensagen
+
+Sheet successfully identified: "Curso R -2018 (respostas)"
+Row successfully appended.
+
+# Parabens
+```
+
+Se tiver problemas de enviar na primeira vez, peço que feche o R e tente novamente. Se persistir peço que rode o comando info() e me envie a reposta por email.
 
 
 
