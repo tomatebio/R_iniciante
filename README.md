@@ -2,7 +2,10 @@
 
 Esta página é do curso de R para iniciantes. O curso é voltado para quem não teve contato com linguagens de programação de nenhum nível ou tem conhecimentos rudimentares sobre  a linguagem. 
 
-     
+- [Ementa](#ementa)
+- [Estrutura do curso](#estrutura-do-curso)
+- [Material do Curso](#material-do-curso)
+- [Atividades swirl](#atividades-swirl) 
 
 #### Ementa  
 >Introdução a linguagem R, principais características, sintaxe básica, funções matemáticas, funções estatísticas, constantes, manipulação de dados, importação e exportação de dados, coerção de objetos, seleção e filtragem (indexação), gráficos, funções gráficas de baixo e alto nível, introdução a algoritmos e programação, iteração e recursão, programação básica no R, otimização de código, interação com outras linguagens
