@@ -114,20 +114,21 @@ swirl()
 
 # Escolha 1- blocos basicos e siga as orientações e mais a frente...
 
-| Enviar log para instrutor? digite 1.
 
-# digite 1 e aguarde, se for a primeira vez que esta usando o sistema ele vai abrir uma janela no navegador para que você autorize o acesso pelo google para manter o log. Aceite
-
-
-# No final vc deve ver a seguinte mensagen
-
-Sheet successfully identified: "Curso R -2018 (respostas)"
+Worksheets feed constructed with private visibility
 Row successfully appended.
 
-# Parabens
+| All that hard work is paying off!
+
+| You've reached the end of this lesson! Returning to the main menu...
+
+| Please choose a course, or type 0 to exit swirl.
+...
+
 ```
 
 Se tiver problemas de enviar na primeira vez, peço que feche o R e tente novamente. Se persistir peço que rode o comando info() e me envie a reposta por email.
+
 
 
 
