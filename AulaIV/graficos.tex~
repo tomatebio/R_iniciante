@@ -1,0 +1,546 @@
+\documentclass{beamer}
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usepackage[latin1]{inputenc}
+%\documentclass[ucs]{beamer}%para sistemas com ucs
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+\usepackage{pgf}
+
+ \usepackage[scaled]{helvet}
+ \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+ \usepackage[T1]{fontenc}
+\usepackage{textcomp}
+%\usepackage[utf8x]{inputenc}%idem
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usetheme{Unicamp}%
+%\usecolortheme{beaver}
+\usecolortheme{dolphin}
+\usefonttheme[onlysmall]{structurebold}
+
+\title[Linguagem R]{R para iniciantes\\ Aula 5 Gráficos}
+\author {Carlos Henrique Tonhatti}
+\institute[Unicamp]{Universidade Estadual de Campinas}
+%\date{24 de maio  de 2012}
+
+
+
+ \AtBeginSection[]
+ {
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Sumário}
+
+       \tableofcontents[currentsection,currentsubsection]
+       \setcounter{tocdepth}{2}
+   \end{frame}
+}
+
+
+\begin{document}
+%para criar a pagina de rosto
+\frame{\titlepage} %inclui a front page 
+
+%==================================================slide
+\begin{frame}
+  \frametitle{Dúvidas da última Aula?}
+\end{frame}
+
+% cria o sumario
+\begin{frame}
+ \frametitle{Sumário}
+ \tableofcontents[pausesections]
+  \setcounter{tocdepth}{2}% profundidade do sumario 
+\end{frame}
+%-------------------------------------------------------
+%==================================================slide
+
+%criando um slide
+
+
+\section{Apresentação de dados em gráficos}
+
+\begin{frame}{Uso de gráficos}
+\centering
+\pgfdeclareimage[width=10cm]{hpgraphic}{hpgraphic}
+\pgfuseimage{hpgraphic}  
+\end{frame}
+
+\begin{frame}{Aspectos importantes sobre gráficos}
+
+  \begin{itemize}
+  \item Deve ter algo para dizer;
+  \item Deve ser legível. 
+  \end{itemize}
+\pause
+Programas só podem ajudar na legibilidade.   
+\end{frame}
+
+\begin{frame}{Principios básicos de apresentação gráfica}
+  \begin{itemize}[<+->]
+  \item Ressaltar os padrões de interesse;
+  \item Manter a estrutura de dados de forma que o leitor possa reconstruir os dados a partir da figura;
+  \item A figura deve ter uma razão dado:tinta alta (mais dados usando a menor quantidade de tinta;
+  \item A figura não deve distorcer, exagerar ou aparar os dados.
+  \end{itemize}
+  \vfill{} \pause 
+\tiny{Ellison, A.M.(2001) \textbf{Exploratory Data Analysis and Graphic Display}. Cap.3:37--62p In:Scheiner, S. M. \& Gurevitch, J.\\\hspace{20pt} \textit{Design and Analysis of Experiments}. Oxford University Press. Oxford.}
+\end{frame}
+
+\begin{frame}{Recomendações}
+
+  \begin{enumerate}[<+->]
+  \item Não fazer gráficos tridimensionais ou coloridos a menos que seja estritamente necessário;
+  \item Não colocar bordas externas nos gráficos;
+  \item Não usar eixos desnecessários;
+  \item Não usar linhas de grade;
+  \item Não usar preenchimentos desnecessários;
+  \item Não colocar título no gráfico;
+  \item Usar virgulas ou  ponto nas casas decimais de acordo com o idioma;
+  \item Colocar as unidades de medida na legenda dos eixos.
+  \end{enumerate}
+  \pause
+Faça do jeito que o editor/revista pedir.
+\end{frame}
+
+\begin{frame}{Comparação}
+\centering
+\pgfdeclareimage[width=10cm]{estilo}{estilo}
+\pgfuseimage{estilo}
+  
+\end{frame}
+\section{Gráficos simples no R}
+\subsection{Dispositivos gráficos}
+
+\begin{frame}{Dispositivos gráficos no R}
+O R possui dois tipos de dispositivos gráficos:
+
+\begin{block}{Tela}
+x11() windows() quartz()  
+\end{block}
+  
+\begin{block}{Arquivos}
+pdf() jpeg() tif() png() \ldots
+\end{block}
+\end{frame}
+
+\begin{frame}{Manipulando dispositivos}
+
+  \begin{block}{Manipulam dispositivos gráficos}
+\# Retorna qual o dispositivo atual\\
+dev.cur() \\ \vspace{10pt}
+
+\# Lista os dispositivos abertos \\
+dev.list() \\ \vspace{10pt}
+
+\# Fecha o dispositivo atual\\
+dev.off() \\ \vspace{10pt}   
+  \end{block}
+\end{frame}
+
+\begin{frame}{Área de desenho de um dispositivo}
+\centering
+\pgfdeclareimage[width=10cm]{area}{area}
+\pgfuseimage{area}
+ \end{frame}
+
+\subsection{Funções gráficas}
+\begin{frame}{Tipos de funções gráficas}
+  \begin{description}
+  \item[Alto nível] desenham um novo gráfico;
+  \item[Baixo nível] modificam um gráfico existente;
+  \item[Interativas] adiciona ou remove informações com o mouse.
+  \end{description}
+\end{frame}
+
+\begin{frame}{Funções de alto nível}
+  \begin{block}{Funções gráficas de alto nível}
+\# Gráficos genéricos \\ 
+plot(x,y, \dots)\\ \vspace{10pt}
+
+\# Diagrama de caixa \\
+boxplot(x, \ldots)\\\vspace{10pt}
+
+\# Histograma\\
+hist(x, \ldots)\\ \vspace{10pt}
+
+\# Gráfico de barras\\
+barplot(x, \ldots)\\
+\end{block}  
+\end{frame}
+
+\begin{frame}{Exemplo}
+\texttt{> png("plot1.png", width=600,height=400)\\
+> x<-c(1:10)\\
+> y<-c(2:11)\\
+> plot(x,y)\\
+> dev.off()\\}
+\centering
+
+\pgfdeclareimage[width=8cm]{plot1}{plot1}
+\pgfuseimage{plot1}  
+\end{frame}
+
+\begin{frame}{Detalhes função \textit{plot()}}
+Argumentos da função:
+
+\begin{description}
+\item[type] altera o tipo de gráfico ( p- pontos, l - linhas, h - histograma, etc);
+\item[main] título do gráfico;
+\item[xlab] título do eixo x;
+\item[ylab] título do eixo y;
+\item[xlim] limites do eixo x;
+\item[ylim] limites do eixo y;
+\item[col] cores.
+\end{description}
+  
+\end{frame}
+
+
+\begin{frame}{Método de entrada usando formula}
+
+No R é possível expressar a relação entre variáveis usando formulas.\\
+\[y \sim x\] \\ 
+\begin{center}
+  ``A variável $y$ é dependente de $x$''
+\end{center}
+\texttt{plot(x,y)\\
+plot(y\texttildelow x)}  
+\end{frame}
+
+\begin{frame}{Exemplos}
+Vamos usar um conjunto de dados do R:\\ Medidas da qualidade do ar em Nova York, 1973.
+
+\texttt{data(airquality)\\
+names(airquality)\\
+airquality\$date<-with(airquality,ISOdate(1973,Month,Day)})
+
+\begin{table}[!htbp] \centering 
+\scalebox{0.8}{
+\begin{tabular}{ cccccccc} 
+ & Ozone & Solar.R & Wind & Temp & Month & Day & date \\ 
+1 & $41$ & $190$ & $7.400$ & $67$ & $5$ & $1$ & 1973-05-01 12:00:00 \\ 
+2 & $36$ & $118$ & $8$ & $72$ & $5$ & $2$ & 1973-05-02 12:00:00 \\ 
+3 & $12$ & $149$ & $12.600$ & $74$ & $5$ & $3$ & 1973-05-03 12:00:00 \\ 
+4 & $18$ & $313$ & $11.500$ & $62$ & $5$ & $4$ & 1973-05-04 12:00:00 \\ 
+5 & $NA$ & $NA$ & $14.300$ & $56$ & $5$ & $5$ & 1973-05-05 12:00:00 \\ 
+6 & $28$ & $NA$ & $14.900$ & $66$ & $5$ & $6$ & 1973-05-06 12:00:00 \\ 
+\end{tabular} }
+\end{table}
+\end{frame}
+
+\begin{frame}{Exemplos}
+\texttt{> plot(airquality\$date,airquality\$Ozone)\\
+> plot(airquality\$Ozone $\sim$ airquality\$date)\\
+> plot(Ozone$\sim$date, data=airquality)}
+
+\centering
+\pgfdeclareimage[width=8cm]{plot2}{plot2}
+\pgfuseimage{plot2}
+\end{frame}
+
+\begin{frame}{Exemplos}
+\texttt{> plot(Ozone$\sim$date, data=airquality, type=''l'')}
+\centering
+\pgfdeclareimage[width=8cm]{plot3}{plot3}
+\pgfuseimage{plot3}
+  
+\end{frame}
+
+\begin{frame}{Exemplos}
+  \texttt{>plot(Ozone$\sim$date, data=airquality, type="h")}
+
+  \begin{center}
+    \pgfdeclareimage[width=8cm]{plot4}{plot4} \pgfuseimage{plot4}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Exemplos}
+  \texttt{> plot(Ozone$\sim$date, data=airquality, type="h", main="Qualidade do ar",xlab="data",ylab="Ozônio",col="red")}
+  \begin{center}
+    \pgfdeclareimage[width=8cm]{plot5}{plot5} \pgfuseimage{plot5}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Funções de baixo nível}
+Na posição (x, y)\\
+  \begin{block}{Funções de baixo nível}
+
+\# adiciona legenda \\
+legend(x, y, legenda)\\  \vspace{10pt}
+
+\# adiciona um eixo\\
+axis(side, \ldots)\\  \vspace{10pt}
+
+\# adiciona texto \\
+text(x, y, labels, \ldots)\\  \vspace{10pt}
+
+\# adiciona texto na margem \\
+mtext(texto, side=3, line=0, \ldots)\\  \vspace{10pt}
+
+\# adiciona pontos\\ 
+points(x)\\
+ \end{block}
+  
+\end{frame}
+
+
+\begin{frame}
+  \begin{block}{Funções de baixo nível}
+\# adiciona linhas\\
+lines(x, y)\\  \vspace{10pt}
+
+\# adiciona segmento de reta\\
+segments(x0, y0, x1, y1)\\  \vspace{10pt}
+
+\# adiciona setas\\
+arrows(x0,y0, x1, y1, angle=30, code=2)\\  \vspace{10pt}
+
+\# adiciona linha com inclinação $b$ e intercepto $a$\\
+abline(a, b)\\  \vspace{10pt}
+
+\# adiciona linha horizontal na posição $y$\\
+abline(h=y)\\  \vspace{10pt}
+
+\# adiciona linha vertical na posição $x$\\
+abline(v=x)  \vspace{10pt}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Exemplo}
+  \begin{columns}
+    \begin{column}{6cm}
+\texttt{\small > plot(x,y,type="n") \\
+> axis(4)\\
+> text(8,8,"Comentário")\\
+> mtext("texto lateral",side=4)\\
+> points(1:10,rep(4,10))\\
+> abline(h=7)\\
+> abline(v=3)\\
+> arrows(1:10,rep(4,10), \\
+1:10,rep(5,10), angle=45)
+}
+    \end{column}
+
+    \begin{column}{6cm}
+     \pgfdeclareimage[width=5cm]{plot6}{plot6}
+     \pgfuseimage{plot6}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Controlando detalhes}
+ 
+A função \texttt{par} controla parâmetros gráficos. \\ \pause
+Alguns argumentos:
+\begin{description}
+\item[cex] tamanho relativo do texto e símbolos (padrão = 1);
+  \item[col] cores dos símbolos e textos (ex. col="red");
+\item[pch] tipo de simbolo utilizado (ex. pch=16);
+\item[new] permite que novos gráficos sejam sobrepostos (padrão FALSE)
+\item[family] família da fonte (ex. ``serif'');
+\item[mfrow] divide a área de plotagem  na forma de tabela (padrão c(1,1)).
+\end{description}
+\end{frame}
+
+\begin{frame}{Exemplo}
+ \begin{columns}
+    \begin{column}{4cm}
+\texttt{\small > par(mfrow=c(2,2),\\ new=FALSE,family="serif")\\ \vspace{10pt}
+> plot(1:4,1:4,\\pch=19,col="green")\\ \vspace{10pt}
+> plot(4:1,1:4,\\pch=22,col="red")\\ \vspace{10pt}
+> plot(1:5,2:6,\\pch=25)\\ \vspace{10pt}
+> plot(1:5,1:5,pch= "p"
+}
+    \end{column}
+
+    \begin{column}{6cm}
+     \pgfdeclareimage[width=6cm]{plot7}{plot7}
+     \pgfuseimage{plot7}
+    \end{column}
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}{Funções interativas}
+Possibilitam interação com um gráfico através do mouse.
+
+\begin{block}{Localizar um ponto}
+locator(n)  
+\end{block}
+\texttt{> plot(Ozone$\sim$date, data=airquality)\\
+> locator(n=2)\\
+\$x\\
+~[1] 115489104 113641840 \\ \vspace{10pt}
+\$y\\
+~[1] 117.0584 122.5218}
+  \end{frame}
+
+\section{Gráficos médios no R}
+\subsection{Esquemas de cores}
+\begin{frame}{Uso de cores}
+Em alguns casos uso de cores podem ajudar a visualização dos dados \\
+\texttt{> bad<-ifelse(airquality\$Ozone>=90,"orange","forestgreen")\\
+> plot(Ozone$\sim$date, data=airquality,type="h",col=bad)}
+\begin{center}
+  \pgfdeclareimage[width=8cm]{plot8}{plot8} \pgfuseimage{plot8}
+\end{center}
+\end{frame}
+
+\begin{frame}{Escolha de cores}
+A escolha de quais cores usar não é algo simples. \\
+Algumas ferramentas podem ajudar:
+\begin{itemize}
+\item \url{www.colorbrewer.org} tem esquemas de cores desenvolvidos para mapas (estão disponiveis no pacote \texttt{RColorBrewer}
+\item Pacote \texttt{colorspace} tem vários esquemas de cores;
+\item Pacote \texttt{dichromat} tenta mostrar o impacto dos esquemas de cores para daltônicos.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo}
+Pacote \texttt{RColorBrewer}\\
+\centering
+\pgfdeclareimage[width=6cm]{paletes7}{paletes7}
+\pgfuseimage{paletes7}  
+\end{frame}
+\begin{frame}{Exemplo}
+\texttt{> require(RColorBrewer)\\
+> barplot(x,col=brewer.pal(2,"BrBG"))}
+
+\begin{center}
+  \pgfdeclareimage[width=6cm]{plot9}{plot9} 
+\pgfuseimage{plot9}
+\end{center}
+\end{frame}
+\subsection{Vários conjuntos de dados}
+\begin{frame}{Dois conjuntos no mesmo gráfico}
+\texttt{> x<-1:10\\
+> x2<-10:1\\
+> y<-1:10\\
+> plot(x,y,col="red",pch=16)\\
+> points(x2,y,col="blue", pch=16)\\
+> legend(2,10,legend=c("azul","vermelho"), \\
+pch=16,col=c("blue","red"))}
+\begin{center}
+  \pgfdeclareimage[width=7cm]{doisconj}{doisconj}
+  \pgfuseimage{doisconj}
+\end{center}
+\end{frame}
+
+\begin{frame}{Duas variáveis}
+\texttt{>  par(mar=c(5,4,4,5))\\
+> plot(Ozone~date, data=airquality,type="h", col="blue",ylab="Ozonio",xlab="Data")\\
+> par(new=TRUE)\\
+> plot(airquality\$date,airquality\$Wind,type="l", col="red",xaxt="n",yaxt="n",xlab= ``  '',ylab= ``  '' )\\
+> axis(4)\\
+> mtext("Vento",side=4,line=3)}\\
+\end{frame}
+
+\begin{frame}{Exemplo}
+\centering
+\pgfdeclareimage[width=10cm]{doiseixos}{doiseixos}
+\pgfuseimage{doiseixos}
+  
+\end{frame}
+
+\begin{frame}{Muitas variáveis ao mesmo tempo}
+\texttt{> plot(airquality)}
+
+\begin{center}
+  \pgfdeclareimage[width=6cm]{plot10}{plot10}
+ \pgfuseimage{plot10}
+\end{center}
+ 
+\end{frame}
+
+\begin{frame}{Muitas variáveis ao mesmo tempo}
+\texttt{> coplot(Ozone$\sim$Solar.R|Temp*Wind, number=c(4,4), data=airquality, pch=21)}
+\begin{center}
+  \pgfdeclareimage[width=6cm]{plot11}{plot11} \pgfuseimage{plot11}
+\end{center}
+
+\end{frame}
+\section{Exemplos}
+\begin{frame}{\textit{heatmap}}
+  \texttt{> image(volcano)}
+  \begin{center}
+    \pgfdeclareimage[width=8cm]{plot12}{plot12}
+     \pgfuseimage{plot12}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Pacote \texttt{Lattice}}
+   \texttt{> require(lattice)\\
+> wireframe(volcano)}
+  \begin{center}
+    \pgfdeclareimage[width=8cm]{plot13}{plot13}
+     \pgfuseimage{plot13}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Pacote \texttt{maps}}
+\texttt{> map('italy', fill = TRUE, col=brewer.pal(8,"BrBG"))}
+\begin{center}
+  \pgfdeclareimage[width=8cm]{plot14}{plot14} \pgfuseimage{plot14}
+\end{center}
+\end{frame}
+
+\begin{frame}{Pacote \texttt{maptools} e \texttt{sp}}
+\texttt{> mapa=readShapePoly("BRASIL")\\
+> hidro=readShapeLines("hidrografia")\\
+> plot(mapa)\\
+> par(new=T)\\
+> plot(hidro,col="blue")}
+\begin{center}
+  \pgfdeclareimage[width=6cm]{plot15}{plot15} \pgfuseimage{plot15}
+\end{center}
+\end{frame}
+
+\begin{frame}{Pacote \texttt{R2G2}}
+
+  \texttt{> example(Pies2GE)}
+\end{frame}
+
+\begin{frame}{Mais exemplos}
+  \begin{itemize}
+  \item \url{http://research.stowers-institute.org/efg/R/}
+  \item \url{http://rgraphgallery.blogspot.com.br/}
+  \end{itemize}
+
+  
+\end{frame}
+
+\begin{frame}{Para próxima aula}
+
+  \begin{itemize}
+  \item Ler capítulo 6 da apostila;
+  \item Fazer tutorial ``Criação e edição de gráficos''
+  \item Fazer exercícios ``Criação e edição de gráficos''
+  \end{itemize} \pause
+Mais?
+
+\begin{itemize}
+\item Leia a ajuda da função \texttt{ par};
+\item Explore os sites de exemplos do slide anterior;
+\item Gráficos ``avançados''
+  \begin{itemize}
+  \item Capítulo 7 da apostila
+  \item \url{http://faculty.washington.edu/kenrice/sisg} seção 3. 
+  \end{itemize}
+
+\end{itemize}
+\end{frame}
+\end{document}
+  

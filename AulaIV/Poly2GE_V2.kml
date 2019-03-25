@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:kml="http://www.opengis.net/kml/2.2"
+xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>R2G2 - Polygons</name>
+	<description>Produced using Lines2GE R script</description>
+	<Style id="sn_ylw-pushpin">
+		<LineStyle id="khLineStyle708">
+			<color>ff000000</color>
+			<width>0.5</width>
+		</LineStyle>
+		<PolyStyle id="khPolyStyle709">
+			<color>FF0000FF</color>
+		</PolyStyle>
+	</Style>
+ 	<Style id="sn_ylw-pushpin0">
+		<LineStyle id="khLineStyle708">
+			<color>ff000000</color>
+			<width>0.5</width>
+		</LineStyle>
+		<PolyStyle id="khPolyStyle709">
+			<color>FFFFFF00</color>
+		</PolyStyle>
+	</Style>
+ <Folder>
+<name>Group_1</name>
+ 	<Placemark>
+		<name>group </name>
+		<styleUrl>#sn_ylw-pushpin</styleUrl>
+		<Polygon>
+			<extrude>0</extrude>
+			<tessellate>1</tessellate>
+			<altitudeMode>absolute</altitudeMode>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+					3.5,1.5,0
+					3.5,3.5,0
+					1.5,3.5,0
+					1.5,1.5,0
+					3.5,1.5,0
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+ </Folder>
+ <Folder>
+<name>Group_2</name>
+ 	<Placemark>
+		<name>group 0</name>
+		<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		<Polygon>
+			<extrude>0</extrude>
+			<tessellate>1</tessellate>
+			<altitudeMode>absolute</altitudeMode>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+					2,1,0
+					2,2,0
+					1,2,0
+					1,1,0
+					2,1,0
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+ </Folder>
+	</Document>
+</kml>

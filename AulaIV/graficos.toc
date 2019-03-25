@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Apresenta\IeC {\c c}\IeC {\~a}o de dados em gr\IeC {\'a}ficos}{7}{0}{1}
+\beamer@sectionintoc {2}{Gr\IeC {\'a}ficos simples no R}{28}{0}{2}
+\beamer@subsectionintoc {2}{1}{Dispositivos gr\IeC {\'a}ficos}{29}{0}{2}
+\beamer@subsectionintoc {2}{2}{Fun\IeC {\c c}\IeC {\~o}es gr\IeC {\'a}ficas}{33}{0}{2}
+\beamer@sectionintoc {3}{Gr\IeC {\'a}ficos m\IeC {\'e}dios no R}{51}{0}{3}
+\beamer@subsectionintoc {3}{1}{Esquemas de cores}{52}{0}{3}
+\beamer@subsectionintoc {3}{2}{V\IeC {\'a}rios conjuntos de dados}{57}{0}{3}
+\beamer@sectionintoc {4}{Exemplos}{63}{0}{4}
