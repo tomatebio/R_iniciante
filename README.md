@@ -1,9 +1,3 @@
----
-output:
-  html_document: default
----
-
-
 Esta página é do curso de R para iniciantes. O curso é voltado para quem não teve contato com linguagens de programação de nenhum nível ou tem conhecimentos rudimentares sobre  a linguagem. 
 
 - [Ementa](#ementa)
