@@ -54,7 +54,7 @@ Este é um curso condensado e exige tempo para realização de exercícios e lei
 
 | Segunda   |  Quarta  | Sexta
 | --------- | ------- | ----|
-| **Aula IV**    | **Aula V** |  | **Aula VI**
+| **Aula IV**    | **Aula V** |   **Aula VI**
 | Gráficos|  Programar em R  | Otimização
 | | Funções de fluxo  | Miscelânea
 | |  Erros de programação  | 
