@@ -155,48 +155,36 @@ $(document).ready(function () {
 <li>Tarefas para serem entregues</li>
 </ul>
 <p>Este é um curso condensado e exige tempo para realização de exercícios e leituras fora da sala de aula. Por isso, há dias reservados para estudo.</p>
-<table style="width:51%;">
+<table style="width:32%;">
 <colgroup>
 <col width="13%"></col>
-<col width="12%"></col>
 <col width="11%"></col>
-<col width="6%"></col>
 <col width="6%"></col>
 </colgroup>
 <thead>
 <tr class="header">
 <th>Segunda</th>
-<th>Terça</th>
 <th>Quarta</th>
-<th>Quinta</th>
 <th>Sexta</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong><a href="https://github.com/tomatebio/R_iniciante/tree/master/AulaI">Aula I</a></strong></td>
-<td></td>
 <td><strong><a href="https://github.com/tomatebio/R_iniciante/tree/master/AulaII">Aula II</a></strong></td>
-<td></td>
 <td><strong><a href="https://github.com/tomatebio/R_iniciante/tree/master/AulaIII">Aula III</a></strong></td>
 </tr>
 <tr class="even">
 <td>Programação, Algorítimos, linguagens</td>
-<td></td>
 <td>Operadores matemáticos</td>
-<td></td>
 <td>Manipulação de dados</td>
 </tr>
 <tr class="odd">
 <td>Características da linguagem R</td>
-<td></td>
 <td>Operadores lógicos</td>
-<td></td>
 <td>Entrada e saída de dados</td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
 <td></td>
 <td></td>
 <td>Indexação</td>
@@ -205,21 +193,15 @@ $(document).ready(function () {
 <td><strong>Prática</strong></td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Install Fest</td>
-<td></td>
 <td>Tutorial</td>
-<td></td>
 <td>Tutorial</td>
 </tr>
 <tr class="odd">
 <td>“Uma hora de código”</td>
-<td></td>
 <td>Exercício</td>
-<td></td>
 <td>Exercício</td>
 </tr>
 </tbody>
@@ -228,60 +210,44 @@ $(document).ready(function () {
 <thead>
 <tr class="header">
 <th>Segunda</th>
-<th>Terça</th>
 <th>Quarta</th>
-<th>Quinta</th>
 <th>Sexta</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Aula IV</strong></td>
-<td></td>
 <td><strong>Aula V</strong></td>
 <td></td>
-<td><strong>Aula VI</strong></td>
 </tr>
 <tr class="even">
 <td>Gráficos</td>
-<td></td>
 <td>Programar em R</td>
-<td></td>
 <td>Otimização</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td></td>
 <td>Funções de fluxo</td>
-<td></td>
 <td>Miscelânea</td>
 </tr>
 <tr class="even">
 <td></td>
-<td></td>
 <td>Erros de programação</td>
-<td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td><strong>Prática</strong></td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Tutorial</td>
-<td></td>
 <td>Tutorial</td>
-<td></td>
 <td>Tutorial</td>
 </tr>
 <tr class="odd">
 <td>Exercício</td>
-<td></td>
 <td>Exercício</td>
-<td></td>
 <td>Exercício</td>
 </tr>
 </tbody>
@@ -295,7 +261,7 @@ $(document).ready(function () {
 </div>
 <div id="atividades-swirl" class="section level3">
 <h3>Atividades swirl</h3>
-<p>Para facilitar a correção e acompanhamento das tarefas este curso vai fazer uso do pacote swirl. Para instala-lo:</p>
+<p>Para facilitar a correção e acompanhamento das tarefas este curso vai fazer uso do pacote swirl. Este é um pacote do R especial para aprendizado. Nele você pode encontrar diversos cursos prontos sobre muito assuntos. Nós vamos usar o “Programando em R”. Este curso está na versão beta de traducão e pode estar com alguns bugs. Ao encontra-los por favor avise-me para que eu possa corrigir. Estou trabalhando para traduzir e adapta-lo para a nossa sala de aula. Para instala-lo:</p>
 <pre class="r"><code># instalar o pacote swirl e outros pacotes necessários.
 
 install.packages(&quot;swirl&quot;)
@@ -307,27 +273,67 @@ install.packages(&quot;httr&quot;)
 library(swirl)
 install_course_github(&quot;tomatebio&quot;,&quot;Programando_em_R&quot;)
 </code></pre>
-<pre class="r"><code># Para fazer um exercicio
-swirl()
+<p>Se você já tiver o curso “Programando_em_R” instalado e quiser atualiza-lo você deve desinstalar a versão antiga primeiro.</p>
+<pre class="r"><code>
+# Isso vai desinstalar todos os cursos que você tiver no computador
 
-# o Programa vai pedir o teu nome e depois de algumas telas de apresentação vai aparecer
+uninstall_all_courses(force=T)
 
-1: Programando em R
+# Agora você instala normalmente 
+install_course_github(&quot;tomatebio&quot;,&quot;Programando_em_R&quot;)
+</code></pre>
+<p>A primeira vez que você rodar o swirl ele vai pedir o teu nome. Coloque o nome como está na lista de sala.</p>
+<pre class="r"><code>
+ # primeiro carregue o pacote
+&gt; library(swirl)
+
+| Hi! I see that you have some variables saved in your workspace. To keep things running smoothly, I
+| recommend you clean up before starting swirl.
+
+| Type ls() to see a list of the variables in your workspace. Then, type rm(list=ls()) to clear your
+| workspace.
+
+| Type swirl() when you are ready to begin.
+
+&gt; swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did then. If you
+| are new, call yourself something unique.
+
+What shall I call you? </code></pre>
+<p>Depois de algumas telas de apresentação voce deve escolher qual curso deseja escolher</p>
+<pre class="r"><code>1: Programando em R
 2: Take me to the swirl course repository!
 
 # Escolha 1 e depois:
 
-| Please choose a lesson, or type 0 to return to
-| course menu.
 
-1: Blocos Básicos
-2: Espaço de Trabalho e Arquivos
-3: Sequências Numéricas
-4: Teste
-5: Vetores
+| Please choose a lesson, or type 0 to return to course menu.
 
-# Escolha 1- blocos basicos e siga as orientações e mais a frente...
+ 1: Blocos Básicos                  2: Datas Horários                  3: Espaço de Trabalho e Arquivos
+ 4: Funções                         5: Graficos báscos                 6: lapply e sapply              
+ 7: Logica                          8: Olhando os dados                9: Sequências Numéricas         
+10: Teste                          11: Valores Faltantes              12: Vetores                      
 
+# Escolha 10-  Teste para testar o envio do teu trabalho
+#  Depois de responder a complicada questão de matemática vai aparecer 
+
+| Você quer enviar o log dessa sessão?
+
+1: Não
+2: Sim
+
+Selection: 
+
+# Selecione &quot;Sim&quot;. Fique atento, pois cada vez a resposta pode mudar de número
+
+# O R vai perguntar mais uma vez para ter certeza
+</code></pre>
+<p>Na primeira vez que você usar será necessario atenticar usando uma conta Google. Para isso, será aberto de forma automática um página para você permitir o acesso.</p>
+<pre class="r"><code>Preparando o envio ...
+Worksheets feed constructed with private visibility
+Waiting for authentication in browser...
+Press Esc/Ctrl + C to abort
 
 Worksheets feed constructed with private visibility
 Row successfully appended.
@@ -337,9 +343,10 @@ Row successfully appended.
 | You've reached the end of this lesson! Returning to the main menu...
 
 | Please choose a course, or type 0 to exit swirl.
-...
+
 </code></pre>
-<p>Se tiver problemas de enviar na primeira vez, peço que feche o R e tente novamente. Se persistir peço que rode o comando info() e me envie a reposta por email.</p>
+<p>Se a mensagem “Row successfully appended” aparecer é sinal que deu tudo certo.</p>
+<p>Se tiver problemas de enviar na primeira vez, peço que feche o R e tente novamente. Se persistir peço que rode o comando sessionInfo() e me envie a reposta do comando por email.</p>
 </div>
 
 

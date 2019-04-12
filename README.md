@@ -41,26 +41,26 @@ O curso é desenvolvido em:
 
 Este é um curso condensado e exige tempo para realização de exercícios e leituras fora da sala de aula. Por isso, há dias reservados para estudo.
 
-| Segunda   | Terça  | Quarta  | Quinta  | Sexta
-| --------- |--------| ------- | ----    | ----|
-| **[Aula I](https://github.com/tomatebio/R_iniciante/tree/master/AulaI)**    |  | **[Aula II](https://github.com/tomatebio/R_iniciante/tree/master/AulaII)** |  | **[Aula III](https://github.com/tomatebio/R_iniciante/tree/master/AulaIII)**
-| Programação, Algorítimos, linguagens| | Operadores matemáticos|  | Manipulação de dados
-| Características da linguagem R| | Operadores lógicos   |  | Entrada e saída de dados
-| |   |   |  | Indexação
-|**Prática** ||   ||
-| Install Fest || Tutorial  || Tutorial 
-| "Uma hora de código" || Exercício || Exercício
+| Segunda   | Quarta  | Sexta
+| --------- | ------- |  ----|
+| **[Aula I](https://github.com/tomatebio/R_iniciante/tree/master/AulaI)**     | **[Aula II](https://github.com/tomatebio/R_iniciante/tree/master/AulaII)**  | **[Aula III](https://github.com/tomatebio/R_iniciante/tree/master/AulaIII)**
+| Programação, Algorítimos, linguagens|  Operadores matemáticos|   Manipulação de dados
+| Características da linguagem R|  Operadores lógicos   |   Entrada e saída de dados
+|     |  | Indexação
+|**Prática** |   |
+| Install Fest | Tutorial  | Tutorial 
+| "Uma hora de código" | Exercício | Exercício
 
 
-| Segunda   | Terça  | Quarta  | Quinta  | Sexta
-| --------- |--------| ------- | ----    | ----|
-| **Aula IV**    |  | **Aula V** |  | **Aula VI**
-| Gráficos| | Programar em R |  | Otimização
-| | | Funções de fluxo  |  | Miscelânea
-| | |  Erros de programação  || 
-|**Prática** ||   ||
-| Tutorial || Tutorial  || Tutorial 
-| Exercício || Exercício || Exercício
+| Segunda   |  Quarta  | Sexta
+| --------- | ------- | ----|
+| **Aula IV**    | **Aula V** |  | **Aula VI**
+| Gráficos|  Programar em R  | Otimização
+| | Funções de fluxo  | Miscelânea
+| |  Erros de programação  | 
+|**Prática** |  |
+| Tutorial | Tutorial  | Tutorial 
+| Exercício | Exercício | Exercício
 
 
 ### Material do Curso 
@@ -74,7 +74,7 @@ Você pode baixar todo o conteudo do curso nesse [link](https://github.com/tomat
 
 ### Atividades swirl
 
-Para facilitar a correção e acompanhamento das tarefas este curso vai fazer uso do pacote swirl. Para instala-lo:
+Para facilitar a correção e acompanhamento das tarefas este curso vai fazer uso do pacote swirl.  Este é um pacote do R especial para aprendizado. Nele você pode encontrar diversos cursos prontos sobre muito assuntos. Nós vamos usar o "Programando em R". Este curso está na versão beta de traducão  e pode estar com alguns bugs. Ao encontra-los por favor avise-me para que eu possa corrigir. Estou trabalhando para traduzir e adapta-lo para a nossa sala de aula. Para instala-lo:
 
 
 ```r
@@ -90,28 +90,83 @@ library(swirl)
 install_course_github("tomatebio","Programando_em_R")
 
 ```
+Se você já tiver o curso "Programando_em_R" instalado e quiser atualiza-lo você deve desinstalar a versão antiga primeiro.
+
 ```r
-# Para fazer um exercicio
-swirl()
 
-# o Programa vai pedir o teu nome e depois de algumas telas de apresentação vai aparecer
+# Isso vai desinstalar todos os cursos que você tiver no computador
 
+uninstall_all_courses(force=T)
+
+# Agora você instala normalmente 
+install_course_github("tomatebio","Programando_em_R")
+
+```
+
+
+A primeira vez que você rodar o swirl ele vai pedir o teu nome. Coloque o nome como está na lista de sala.
+
+```r
+
+ # primeiro carregue o pacote
+> library(swirl)
+
+| Hi! I see that you have some variables saved in your workspace. To keep things running smoothly, I
+| recommend you clean up before starting swirl.
+
+| Type ls() to see a list of the variables in your workspace. Then, type rm(list=ls()) to clear your
+| workspace.
+
+| Type swirl() when you are ready to begin.
+
+> swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did then. If you
+| are new, call yourself something unique.
+
+What shall I call you? 
+```
+
+Depois de algumas telas de apresentação voce deve escolher qual curso deseja escolher
+
+```r
 1: Programando em R
 2: Take me to the swirl course repository!
 
 # Escolha 1 e depois:
 
-| Please choose a lesson, or type 0 to return to
-| course menu.
 
-1: Blocos Básicos
-2: Espaço de Trabalho e Arquivos
-3: Sequências Numéricas
-4: Teste
-5: Vetores
+| Please choose a lesson, or type 0 to return to course menu.
 
-# Escolha 1- blocos basicos e siga as orientações e mais a frente...
+ 1: Blocos Básicos                  2: Datas Horários                  3: Espaço de Trabalho e Arquivos
+ 4: Funções                         5: Graficos báscos                 6: lapply e sapply              
+ 7: Logica                          8: Olhando os dados                9: Sequências Numéricas         
+10: Teste                          11: Valores Faltantes              12: Vetores                      
 
+# Escolha 10-  Teste para testar o envio do teu trabalho
+#  Depois de responder a complicada questão de matemática vai aparecer 
+
+| Você quer enviar o log dessa sessão?
+
+1: Não
+2: Sim
+
+Selection: 
+
+# Selecione "Sim". Fique atento, pois cada vez a resposta pode mudar de número
+
+# O R vai perguntar mais uma vez para ter certeza
+
+```
+
+
+ Na primeira vez que você usar será necessario atenticar usando uma conta Google. Para isso, será aberto de forma automática um página para você permitir o acesso. 
+ 
+```r
+Preparando o envio ...
+Worksheets feed constructed with private visibility
+Waiting for authentication in browser...
+Press Esc/Ctrl + C to abort
 
 Worksheets feed constructed with private visibility
 Row successfully appended.
@@ -121,11 +176,12 @@ Row successfully appended.
 | You've reached the end of this lesson! Returning to the main menu...
 
 | Please choose a course, or type 0 to exit swirl.
-...
+
 
 ```
-
-Se tiver problemas de enviar na primeira vez, peço que feche o R e tente novamente. Se persistir peço que rode o comando info() e me envie a reposta por email.
+ Se a mensagem "Row successfully appended" aparecer é sinal que deu tudo certo.
+ 
+Se tiver problemas de enviar na primeira vez, peço que feche o R e tente novamente. Se persistir peço que rode o comando sessionInfo() e me envie a reposta do comando  por email.
 
 
 
