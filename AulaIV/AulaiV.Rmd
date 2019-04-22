@@ -1,0 +1,639 @@
+---
+title: "Aula 5 Gráficos"
+author: "Carlos Tonhatti"
+date: " 22 abril 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(knitr)
+library(png)
+```
+
+#  Pensando sobre gráficos
+
+## Aspectos importantes sobre gráficos
+
+- Deve ter algo para dizer
+- Deve ser legível 
+
+*Programas só podem ajudar com a legibilidade.*
+
+
+## Principios básicos
+
+- Ressaltar os padrões de interesse;
+- Manter a estrutura de dados de forma que o leitor possa reconstruir os dados a partir da figura;
+- A figura deve ter uma razão dado:tinta alta (mais dados usando a
+menor quantidade de tinta;
+- A figura não deve distorcer, exagerar ou aparar os dados.
+
+
+## Recomendações
+- Não fazer gráficos tridimensionais ou coloridos a menos que seja
+estritamente necessário;
+- Não colocar bordas externas nos gráficos;
+- Não usar eixos desnecessários;
+- Não usar linhas de grade;
+- Não usar preenchimentos desnecessários;
+- Não colocar título no gráfico;
+- Usar virgulas ou ponto nas casas decimais de acordo com o idioma;
+- Colocar as unidades de medida na legenda dos eixos.
+
+>- **Faça do jeito que o editor/revista pedir.**
+
+## Compare os dois gráficos
+```{r}
+img1_path <- "estilo.png"
+include_graphics(img1_path) 
+```
+
+# Gráficos simples no R 
+
+## Dispositivos gráficos no R
+
+O R possui vários dispositivos gráficos. Um dispositivo é "para onde" o gráfico vai.
+
+**Dispositivos de tela**
+
+  * x11()
+  * windowns()
+  * quartz()
+
+**Dispositivos de arquivos**
+
+  * jpg()
+  * png()
+  * pdf()
+  * vários outros
+
+
+## Mover entre os dispositivos gráficos
+
+### Retorna qual o dispositivo atual
+ 
+dev.cur()
+
+### Lista os dispositivos abertos
+ 
+dev.list()
+ 
+### Fecha o dispositivo atual
+ 
+dev.off()
+
+**Sempre feche o dispositivo**
+
+
+## Área de desenho de um gráfico
+
+```{r, out.width = "80%"}
+img2_path <- "area.png"
+include_graphics(img2_path) 
+```
+
+
+## Tipos de funcões gráficas 
+
+- **Alto nível** desenham um novo gráfico;
+- **Baixo nível** modificam um gráfico existente;
+- **Interativas** adiciona ou remove informações com o mouse.
+
+# Funcão de alto nível
+## Funcões de alto nível
+
+
+### Gráficos genéricos
+
+plot(x,y, . . . )
+
+### Diagrama de caixa
+
+boxplot(x, . . . )
+
+### Histograma
+
+hist(x, . . . )
+ 
+### Gráfico de barras
+
+barplot(x, . . . )
+
+
+## Exemplos 
+
+```{r, echo=T}
+png("MEUGRAFICO.PNG")
+x<-c(1:10)
+y<-c(2:11)
+plot(x,y, bty="l")
+dev.off()
+```
+
+
+## Boxplot
+```{r, echo=T}
+numeros<- rnorm(10000)
+boxplot(numeros)
+
+```
+
+
+## Histograma
+```{r, echo=T}
+numeros<-rnorm(10000)
+hist(numeros)
+
+```
+
+
+## Detalhes função plot()
+Argumentos da função:
+
+- **type** altera o tipo de gráfico ( p- pontos, l - linhas, h -histograma, etc);
+
+- **main** título do gráfico;
+
+- **xlab** título do eixo x;
+
+- **ylab** título do eixo y;
+
+- **xlim** limites do eixo x;
+
+- **ylim** limites do eixo y;
+
+- **col** cores.
+
+## Método de entrada usando formula
+No R é possível expressar a relação entre variáveis usando formulas.
+
+<div align="center"> y ∼ x  </div>  </br>
+
+<div align="center"> “A variável y é dependente de x” </div> </br> </br>
+
+
+<div align="center"> plot(x,y) </div>
+
+
+<div align="center"> plot(y~x) </div>
+
+
+## Exemplos
+
+Medidas da qualidade do ar em Nova York, 1973.
+
+```{r, echo=T}
+data(airquality)
+airquality$date<-with(airquality,ISOdate(1973,Month,Day) )
+head(airquality)
+```
+
+## Exemplos
+```{r, echo=T}
+# plot(airquality$date,airquality$Ozone)
+# plot(airquality$Ozone ∼ airquality$date)
+plot(Ozone ~ date, data=airquality)
+```
+
+## Exemplos
+```{r, echo=T}
+plot(Ozone ~ date, data= airquality, type="l")
+```
+
+## Exemplos
+```{r, echo=T}
+plot(Ozone ~ date, data= airquality, type="h")
+```
+
+## Exemplos
+```{r, echo=T}
+plot(Ozone ~ date, data= airquality, type="h", main="Qualidade do ar",
+     xlab="Data", ylab="Ozônio", col= "red")
+```
+
+## Exemplos Cores
+
+```{r, echo=T}
+bad<-ifelse(airquality$Ozone>=90,"orange","forestgreen")
+plot(Ozone~date, data=airquality,type="h",col=bad)
+```
+
+
+# Funcões de baixo nível
+
+## Funcões de baixo nível
+
+### adiciona legenda
+legend(x, y, legenda)
+
+### adiciona um eixo
+axis(side, . . . )
+
+### adiciona texto
+text(x, y, labels, . . . )
+
+### adiciona texto na margem
+mtext(texto, side=3, line=0, . . . )
+
+## Mais funcões 
+
+### adiciona pontos
+points(x)
+
+### adiciona linhas
+lines(x, y)
+
+### adiciona segmento de reta
+segments(x0, y0, x1, y1)
+
+### adiciona setas
+arrows(x0,y0, x1, y1, angle=30, code=2)
+
+## Mais funcões
+
+### adiciona linha com inclinação b e intercepto a
+abline(a, b)
+
+### adiciona linha horizontal na posição y
+abline(h=y)
+
+### adiciona linha vertical na posição x
+abline(v=x)
+
+
+
+
+## Exemplo 
+
+```{r, eval=FALSE, echo=T}
+plot(x,y,type="n")
+axis(4)
+text(8,8,"Comentário")
+mtext("texto lateral",side=4)
+points(1:10,rep(4,10))
+abline(h=7)
+abline(v=3)
+arrows(1:10,rep(4,10),1:10,rep(5,10), angle=45)
+```
+
+##Exemplo
+
+```{r}
+plot(x,y,type="n")
+axis(4)
+text(8,8,"Comentário")
+mtext("texto lateral",side=4)
+points(1:10,rep(4,10))
+abline(h=7)
+abline(v=3)
+arrows(1:10,rep(4,10),1:10,rep(5,10), angle=45)
+```
+
+
+## Controlando detalhes
+A função par controla parâmetros gráficos.
+
+Alguns argumentos:
+
+-**cex** tamanho relativo do texto e símbolos (padrão = 1);
+
+-**col** cores dos símbolos e textos (ex. col="red");
+
+-**pch** tipo de simbolo utilizado (ex. pch=16);
+
+-**new** permite que novos gráficos sejam sobrepostos (padrão FALSE)
+
+-**family** família da fonte (ex. “serif”);
+
+-**mfrow** divide a área de plotagem na forma de tabela (padrãoc(1,1)
+
+
+## Exemplos
+
+```{r, echo=T, out.width="80%"}
+par(mfrow=c(2,2),new=FALSE,family="serif")
+plot(1:4,1:4,pch=19,col="green")
+plot(4:1,1:4,pch=22,col="red")
+plot(1:5,2:6,pch=25)
+plot(1:5,1:5,pch= "p")
+```
+
+
+## Dois conjuntos de dados 
+
+```{r, echo=T}
+x<-1:10 ; x2<-10:1 ; y<-1:10
+plot(x,y,col="red",pch=16)
+points(x2,y,col="blue", pch=16) # adiciona pontos novos
+legend(5,10,legend=c("azul","vermelho"),pch=16,col=c("blue","red"))
+```
+
+## Dois conjuntos de dados (sobreposicao)
+
+```{r, echo=T, eval=F}
+par(mar=c(5,4,4,5))
+plot(Ozone~date, data=airquality,type="h",col="blue",
+     ylab="Ozonio",xlab="Data")
+
+par(new=TRUE) # faz a sobreposicao 
+plot(airquality$date,airquality$Wind,type="l",col="red")
+  
+```
+
+## Dois conjuntos de dados (sobreposicao)
+```{r }
+par(mar=c(5,4,4,5))
+plot(Ozone~date, data=airquality,type="h",col="blue",
+     ylab="Ozonio",xlab="Data")
+
+par(new=TRUE)
+plot(airquality$date,airquality$Wind,type="l",col="red")
+```
+
+
+
+
+## Dois conjuntos os mais com sobreposicao
+```{r, eval=F, echo=T }
+par(mar=c(5,4,4,5))
+plot(Ozone~date, data=airquality,type="h",col="blue",
+     ylab="Ozonio",xlab="Data")
+
+par(new=TRUE)
+plot(airquality$date,airquality$Wind,type="l",col="red",
+     xaxt="n",yaxt="n",xlab="",ylab="") # suprime os eixos e os titulos
+
+axis(4) # adiciona o eixo no lado 4
+mtext("Vento",side=4,line=3) # adiciona o titulo do lado do eixo
+```
+
+## Dois conjuntos ou mais com sobreposicao
+
+```{r}
+par(mar=c(5,4,4,5))
+plot(Ozone~date, data=airquality,type="h",col="blue",
+     ylab="Ozonio",xlab="Data")
+
+par(new=TRUE)
+plot(airquality$date,airquality$Wind,type="l",col="red",
+     xaxt="n",yaxt="n",xlab="",ylab="") # suprime os eixos e os titulos
+
+axis(4) # adiciona o eixo no lado 4
+mtext("Vento",side=4,line=3) # adiciona o titulo do lado do eixo
+```
+
+
+## Histograma e densidade
+```{r, echo=T}
+x<-rnorm(10000)+0.2
+hist(x, bty="l", prob=T, main="", ylim=c(0,0.45))
+lines(density(x), col="red",lty=2, lwd=2)
+curve(dnorm(x,0,1), add=TRUE, col="blue", lty=3, lwd=2)
+
+```
+
+
+## Normalidade
+```{r, echo=T}
+par(mfrow=c(1,2))
+qqnorm(x)
+qqnorm(rexp(1000,3)) ;qqline(rexp(1000,3), col="red")
+```
+
+## Tudo de uma vez 
+
+```{r, echo=T}
+plot(airquality)
+```
+
+## Boxplot 
+```{r, echo=T}
+
+boxplot(len ~ dose:supp, data = ToothGrowth,
+        boxwex = 0.5, col = c("orange", "yellow"), 
+        xlab = "Vitamin C dose mg", ylab = "tooth length")
+```
+
+
+
+
+# Funcões interativas
+
+## Localizar pontos
+
+### Retorna as coordenadas de um ponto ao ser clicado.  
+locator(n)
+
+```{r, echo=T, eval= F}
+plot(Ozone~date, data=airquality, type="h") 
+     main="Qualidade do ar",xlab="data",ylab="Ozônio",col="red")
+abline(h=90, lty=2)
+text(locator(3),"Muito Ruim", adj=0)
+```
+Não funciona no slide
+
+
+## Plotly
+```{r, echo=T, eval=F}
+library(plotly)
+library(ggplot2)
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+plot_ly(d, type="scatter",x = d$carat,
+        y = d$price,text = paste("Clarity: ", d$carat),
+        mode = "markers", color = d$carat, size = d$carat)
+```
+
+## Plotly
+```{r}
+library(plotly, quietly = TRUE, warn.conflicts = FALSE)
+library(ggplot2,  quietly = TRUE, warn.conflicts = FALSE)
+
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+suppressMessages(
+plot_ly(d, type="scatter",x = d$carat,
+        y = d$price,text = paste("Clarity: ", d$carat),
+        mode = "markers", color = d$carat, size = d$carat)
+)
+```
+
+
+
+## Manipulate
+```{R, eval=F, echo=T}
+library(manipulate)
+manipulate(
+  plot(cars, xlim = c(0, x.max), type = type, ann = label),
+  x.max = slider(10, 25, step=5, initial = 25),
+  type = picker("Points" = "p", "Line" = "l", "Step" = "s"),
+  label = checkbox(TRUE, "Draw Labels"))
+```
+
+
+# Cores 
+
+## Escolhas de cores 
+
+A escolha de quais cores usar não é algo simples.
+
+Algumas ferramentas podem ajudar:
+
+- www.colorbrewer.org tem esquemas de cores desenvolvidos para mapas (estão disponiveis no pacote RColorBrewer)
+
+- Pacote colorspace tem vários esquemas de cores;
+
+- Pacote dichromat tenta mostrar o impacto dos esquemas de cores para daltônicos.
+
+
+## RColorBrewer
+```{r, echo=T}
+library(RColorBrewer)
+display.brewer.all()
+```
+
+## RColorBrewer 
+
+```{r, echo=T}
+x<-1:10
+barplot(x,col=brewer.pal(10,"BrBG"))
+```
+
+
+## Cores de outras fontes
+
+Para ver as cores do R demo(colors)
+```{r, echo=T}
+barplot(c(10,20,20,10,5), col=c("#ff9999ff", "#ff1010ff", "#10ffadff",
+                                "#fff410ff", "#ff10ecff"))
+
+```
+
+# Outros gráficos
+
+## Pontos sobrepostos
+
+```{r, echo=T}
+par(mfrow=c(1,2))
+x<-rep(5,times=100)
+y<-rep(5,times=100)
+plot(x,y, xlim=c(4,6), ylim=c(4,6))
+plot(jitter(x),jitter(y), xlim=c(4,6), ylim=c(4,6))
+
+```
+
+
+## Muitos, muitos pontos
+
+```{r, echo=T, message=FALSE, warning=FALSE}
+library("survey")
+data(api)
+plot(apipop$api00, apipop$api99)
+```
+
+## Muitos, muitos pontos
+```{r, echo= T}
+library("hexbin")
+plot(hexbin(apipop$api99,apipop$api00), style="centroids")
+```
+
+
+# Mapas
+
+## Image
+```{r, echo=T}
+image(volcano)
+```
+
+
+## Os mesmos dados
+```{r, echo=T}
+plot_ly(z = volcano, type = "surface")
+```
+
+## Maps
+
+```{r, echo=T}
+require(maps)
+map('world', fill = TRUE, col=brewer.pal(8,"BrBG"))
+## usa um banco interno 
+```
+
+
+## Arquivos shapefile
+
+```{r, echo=T, eval=F}
+require(maptools)
+require(sp)
+mapa=readShapePoly("BRASIL")
+hidro=readShapeLines("hidrografia")
+summary(mapa)
+summary(hidro)
+#limites do mapa
+plot(mapa)
+par(new=F)
+plot(hidro,col="blue")
+```
+
+## Arquivos shapefile
+```{r, message=FALSE, warning=FALSE}
+require(maptools,  quietly = TRUE, warn.conflicts = FALSE)
+require(sp,  quietly = TRUE, warn.conflicts = FALSE)
+```
+
+```{r, echo=T, message=FALSE, warning=FALSE}
+mapa=readShapePoly("BRASIL")
+hidro=readShapeLines("hidrografia")
+#limites do mapa
+plot(mapa)
+par(new=T)
+plot(hidro,col="blue")
+```
+
+
+## MUITOS GRÁFICOS
+```{r, echo=T, eval=F}
+flag<-read.table("flag.data.txt", sep=",")
+dir.create("flags")
+
+png(filename ="flags/bandeira%3d.png")
+for(i in 1:nrow(flag)){
+    pie(as.numeric(flag[i,11:16]), main=flag[i,1],
+        labels= c( "red", "green","blue",  "gold" ,  " white", "black"),
+        col= c( "red", "green","blue",  "yellow" ,  "white", "black"))
+}
+dev.off()
+```
+
+	
+# Mais exemplos
+
+## Galeria
+
+   Links para ver exemplos
+   
+   http://rgraphgallery.blogspot.com.br/
+   
+   
+   http://r-graph-gallery.com
+   
+   
+
+## Para próxima aula
+
+Ler capítulo 6 da apostila;
+
+Fazer tutorial “Criação e edição de gráficos”
+
+Fazer exercícios “Criação e edição de gráficos”
+
+Leia a ajuda da função par ;
+
+Explore os sites de exemplos do slide anterior;
+
+http://faculty.washington.edu/kenrice/sisg seção 3.
+
+
+
+

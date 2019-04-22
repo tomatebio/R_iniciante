@@ -25,6 +25,12 @@ png("plot5.png", width=600,height=400)
 plot(Ozone~date, data=airquality, type="h", main="Qualidade do ar",xlab="data",ylab="Ozônio",col="red")
 dev.off()
 
+
+png("plot8.png", width=600,height=400)
+bad<-ifelse(airquality$Ozone>=90,"orange","forestgreen")
+plot(Ozone~date, data=airquality,type="h",col=bad)
+dev.off()
+
 png("plot6.png")
 plot(x,y,type="n")
 axis(4)
@@ -47,11 +53,33 @@ dev.off()
 plot(Ozone~date, data=airquality)
 locator(n=2)
 
+
+demo(graphics)
+demo(image)
+demo(colors)
+require(sp)
+demo(gallery)
+demo(webmap)
+
+
+
+hdf <- get_map("houston, texas")
+ggmap(hdf, extent = "normal")
+ggmap(hdf) # extent = "panel", note qmap defaults to extent = "device"
+ggmap(hdf, extent = "device")
+###
+plot(Ozone~date, data=airquality, type="h", 
+     main="Qualidade do ar",xlab="data",ylab="Ozônio",col="red")
+abline(h=90, lty=2)
+text(locator(3),"Muito Ruim", adj=0)
+
+
+
+
 png("doisconj.png",width=600,height=400)
 x<-1:10
 x2<-10:1
 y<-1:10
-
 plot(x,y,col="red",pch=16)
 points(x2,y,col="blue", pch=16)
 legend(5,10,legend=c("azul","vermelho"),pch=16,col=c("blue","red"))
@@ -67,10 +95,7 @@ axis(4)
 mtext("Vento",side=4,line=3)
 dev.off()
 
-png("plot8.png", width=600,height=400)
-bad<-ifelse(airquality$Ozone>=90,"orange","forestgreen")
-plot(Ozone~date, data=airquality,type="h",col=bad)
-dev.off()
+
 
 require(RColorBrewer)
 example(RColorBrewer)
@@ -80,19 +105,16 @@ require(RColorBrewer)
 barplot(x,col=brewer.pal(8,"BrBG"))
 dev.off()
 
-png("plot10.png")
-plot(airquality)
-dev.off()
 
-png("plot11.png",)
+png("plot11.png")
 coplot(Ozone~Solar.R|Temp*Wind, number=c(4,4),data=airquality, pch=21)
 dev.off()
 
-png("plot12.png",,width=600,height=400)
+png("plot12.png",width=600,height=400)
 image(volcano)
 dev.off()
 
-png("plot13.png",,width=600,height=400)
+png("plot13.png",width=600,height=400)
 wireframe(volcano)
 dev.off()
 
@@ -102,6 +124,8 @@ install.packages("maps")
 require(maps)
 map('italy', fill = TRUE, col=brewer.pal(8,"BrBG"))
 dev.off()
+
+map('world', fill = TRUE, col=brewer.pal(8,"BrBG"))
 
 png("plot15.png")
 require(maptools)
@@ -116,9 +140,8 @@ par(new=T)
 plot(hidro,col="blue")
 dev.off()
 
-install.packages("R2G2")
-library(R2G2)
-example(Pies2GE)
+plot("plot16.png")
+require(ggmap)
 
 
 
