@@ -1,0 +1,102 @@
+
+#par ou impar?
+a<-9
+if(a%%2==0){
+ print("É par")
+  }else{
+  print("É impar")
+  }
+
+#ifelse
+numero<- c(0,1,2,3,4,5,6,7,8)
+
+ifelse(numero%%2==0,"par","impar")
+
+#for
+alunos<-matrix(1:12,ncol=3)
+numero.alunos<-dim(alunos)[1]
+
+medias<-c()
+for(i in 1:numero.alunos){
+ medias[i]<-mean(alunos[i,])
+}
+
+##
+
+numero<-13
+aux<-numero-1
+primo<-TRUE
+while(primo==TRUE &aux >1){
+      if(numero%%aux==0){
+          primo<-FALSE
+          print(aux)
+      }else{
+
+          aux=aux-1
+      }
+}
+print(primo)
+
+
+media <-function(x)
+    {
+        soma=sum(x)
+        nobs=length(x)
+        media=soma/nobs
+        return(media)
+    }
+
+mediaEsoma <-function(x)
+    {
+        soma=sum(x)
+        nobs=length(x)
+        media=soma/nobs
+        return(c(media,soma))
+    }
+
+soma=sum(c(3,4,5))
+media2 <-function(x)
+    {
+         nobs=length(x)
+        media=soma/nobs
+        return(media)
+     }
+media2(c(3,4,5))
+
+
+#
+
+for(i in 1:10){
+  cat(i,"\n")
+  stopifnot(i<5)
+}
+
+# Depurando uma função
+media <-function(x)
+    {
+        soma=sum(x)
+        nobs=length(x)
+        media=soma/nobs
+        return(media)
+    }
+debug(media)
+media(c(1,2,3))
+undebug(media)
+
+
+# Medindo o tempo
+
+Ehprimo<-function(numero){
+aux<-numero-1
+primo<-TRUE
+while(primo==TRUE &aux>1){
+      if(numero%%aux==0){
+      primo<-FALSE}
+
+      aux=aux-1
+}
+return(primo)
+}
+
+system.time(Ehprimo(400001))
+system.time(Ehprimo(4001))

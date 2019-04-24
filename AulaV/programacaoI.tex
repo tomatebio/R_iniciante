@@ -1,0 +1,626 @@
+\documentclass[handout]{beamer}
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usepackage[latin1]{inputenc}
+%\documentclass[ucs]{beamer}%para sistemas com ucs
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+\usepackage{pgf}
+
+ \usepackage[scaled]{helvet}
+ \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+ \usepackage[T1]{fontenc}
+
+%\usepackage[utf8x]{inputenc}%idem
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usetheme{Unicamp}%
+\usecolortheme{dolphin}
+%\usecolortheme{seahorse}
+\usefonttheme[onlysmall]{structurebold}
+
+\title[Linguagem R]{R para iniciantes\\ Aula V Programação I}
+\author {Carlos Henrique Tonhatti}
+\institute[Unicamp]{Universidade Estadual de Campinas}
+\date{}
+
+
+
+ \AtBeginSection[]
+ {
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Sumário}
+
+       \tableofcontents[currentsection,currentsubsection]
+       \setcounter{tocdepth}{2}
+   \end{frame}
+}
+
+
+\begin{document}
+%para criar a pagina de rosto
+\frame{\titlepage} %inclui a front page 
+
+%==================================================slide
+\begin{frame}
+  \frametitle{Dúvidas da última Aula?}
+\end{frame}
+
+% cria o sumario
+\begin{frame}
+ \frametitle{Sumário}
+ \tableofcontents[pausesections]
+  \setcounter{tocdepth}{2}% profundidade do sumario 
+\end{frame}
+%-------------------------------------------------------
+%==================================================slide
+
+
+\section{Programação em R}
+\begin{frame}{Como é feita a programação em R}
+  Nas últimas aulas vimos:
+  \begin{itemize}[<+->]
+  \item A sintaxe e a lógica das funções no R;
+  \item Como organizar os dados nas classes de objetos do R;
+  \item Como organizar passo-a-passo uma rotina no R (\textit{script}).
+  \end{itemize}
+  \pause Na aula de hoje vamos ver mais algumas técnicas que auxiliam na construção de uma rotina de trabalho no R.
+\end{frame}
+
+\subsection{Funções condicionais}
+\begin{frame}{Funções condicionais}
+
+ Em muitas tarefas desejamos que o computador execute instruções diferentes dependendo de alguma condição lógica.
+  
+ \begin{columns}
+   \begin{column}{6cm}
+     \texttt{INÍCIO\\
+       \hspace{10pt}   Abrir o Forno\\
+       \hspace{10pt}   SE(Forno== acesso)\\
+       \hspace{10pt}\hspace{10pt}       Botar lenha\\
+       \hspace{10pt}   CASO CONTRÁRIO\\
+       \hspace{10pt}\hspace{10pt}       Acender fogo\\
+       \hspace{10pt}   Assar pão\\
+       FIM\\}
+   \end{column}
+   \begin{column}{6cm}
+  \texttt{ \\   AbraOForno()\\
+      \hspace{10pt} if(Forno==acesso)\\
+     \{\\
+      \hspace{10pt} ColocarLenha()\\
+      \} else \{\\
+     \hspace{10pt} AcenderOForno()\\
+ \}\\
+Assar o pão}
+
+   \end{column}
+ \end{columns}
+\end{frame}
+
+\begin{frame}{Funções condicionais --- sintaxe}
+
+  \begin{block}{Sintaxe}
+\# Executa apenas se condição== TRUE \\
+if(condição)\{ \\
+\hspace{10pt}  bloco de instruções\\
+\}\\ \vspace{10pt}
+\# Executa bloco 1 se condição== TRUE OU bloco 2 caso contrário.\\
+if(condição)\{\\
+\hspace{10pt}  bloco 1\\
+\}else\{\\
+\hspace{10pt}   bloco 2\\
+\}\\    
+  \end{block}
+  \pause A condição pode ser qualquer regra lógica.
+\end{frame}
+
+\begin{frame}{Exemplos}
+\texttt{\#par ou impar?\\
+a<-9\\
+if(a\%\%2==0)\{\\
+\hspace{10pt}  print("É par")\\
+  \}else\{\\
+\hspace{10pt}   print("É impar")\\
+  \}\\}
+\pause
+\texttt{~[1] "É impar"}
+ \end{frame}
+ \begin{frame}{\textit{ifelse}}
+   \begin{block} {Condicional mais simples}
+\# Retorna um vetor com os valores indicados\\
+     ifelse(condição,valor se verdadeiro, valor se falso)\
+   \end{block}
+\pause
+\texttt{numero<- c(0,1,2,3,4,5,6,7,8)\\
+ifelse(numero\%\%2==0,"par","impar")\\
+~[1] "par" ~  "impar"~ "par" ~  "impar"~ "par" ~  "impar"~ "par" \\ ~[8]~  "impar"~ "par" } 
+ \end{frame}
+\subsection{Funções de repetição}
+\begin{frame}{Funções de repetição}
+Em algumas tarefas desejamos que um bloco de instruções repetidamente até que uma condição seja satisfeita.
+   \begin{columns}
+     \begin{column}{6cm}
+       INÍCIO\\
+    Turma <- NotasAlunos\\
+      CalcularMedia(Aluno1)\\
+      CalcularMedia(Aluno2)\\
+      CalcularMedia(Aluno3)\\
+      \dots\\
+      FIM\\
+     \end{column}
+     \begin{column}{6cm}
+      INÍCIO\\
+      Turma<-NotasAlunos\\
+      Repita i de 1 até Numero de alunos\\
+      \hspace{10pt} CalcularMedia(Alunoi)\\
+       FIM     \\
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Funções de repetição}
+  \begin{block}{Funções de repetição}
+    \# Para cada repetição o objeto $i$ recebe um valor da sequência. Termina no último elemento da sequência.\\
+for(i in sequência)\{\\
+bloco de instruções \\
+\}\\ \vspace{10pt}
+ \# Testa se a condição for verdadeira executa o bloco de instruções. Repete até a condição se tornar falsa.\\
+ while(condição)\{\\
+ bloco de instruções\\
+ \}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Exemplo}
+alunos<-matrix(1:12,ncol=3)\\
+numero.alunos<-dim(alunos)[1]\\
+medias<-c()\\
+for(i in 1:numero.alunos)\{\\
+\hspace{10pt} medias[i]<-mean(alunos[i,])\\
+\}
+
+\pause  \vspace{10pt}
+Neste caso poderia usar a função \texttt{apply(alunos,1,mean)}
+  
+\end{frame}
+
+\begin{frame}{Exemplo}
+Saber se um número é primo
+
+\texttt{numero<-13\\
+aux<-numero-1\\
+ primo<-TRUE\\
+ while(primo==TRUE \& aux>1)\{\\
+ \hspace{30pt}      if(numero\%\%aux==0)\{\\
+  \hspace{30pt}\hspace{30pt}     primo<-FALSE\}\\
+  \hspace{30pt}     aux=aux-1\\
+ \}
+ print(primo)
+ }  
+\end{frame}
+
+\begin{frame}{Cuidado com repetições}
+
+Função que repetem instruções \textit{``loops''} podem trazer uma série de problemas, entre eles:
+\begin{itemize}[<+->]
+\item ``\textit{loops} infinitos'' a repetição nunca para. A condição lógica sempre é verdadeira;
+\item  ``Nunca acontece''. A condição lógica nunca é verdadeira;
+\item  ``Big loops''. Quantidade de dados muito grande. Demora muito pra rodar. 
+\end{itemize}
+\pause
+Soluções:\\
+\begin{itemize}
+\item Verifique atentamente as condições lógicas;
+\item Tente outras funções: apply, tapply, foreach \dots \footnotemark{} \footnotetext{Assunto da próxima aula.}{}
+\end{itemize}
+  
+\end{frame}
+\subsection{Construindo funções}
+\begin{frame}{Definição}
+
+  \begin{block}{Função}
+É uma sequência de instruções que fazem uma tarefa especifica  empacotada como uma unidade.
+ \end{block} \pause
+ Dependendo da linguagem pode receber outros  nomes: procedimento, rotina, subrotina, subprograma, método. 
+
+\end{frame}
+
+\begin{frame}{Classe \texttt{function} no R}
+No R funções são objetos da classe \texttt{function}.\\
+\texttt{> class(plot)\\
+~[1] "function''}
+  \pause \\ \vspace{20pt}
+Podemos criar funções no R de modo parecido como criamos outros objetos.
+\end{frame}
+
+\begin{frame}{Criando uma função}
+  \begin{block}{Sintaxe da função}
+   nome<-function(argumentos da função)\\
+\hspace{50pt}\{\\
+  \hspace{50pt}   Instruções \\
+  \hspace{50pt} return()
+\\ \hspace{50pt}\}
+    
+  \end{block}
+\end{frame}
+
+\begin{frame}{Exemplo}
+  \begin{columns}
+    \begin{column}{6cm}
+      \texttt{numero<-13\\
+aux<-numero-1\\
+ primo<-TRUE\\
+ while(primo==TRUE \& aux>1)\{\\
+ \hspace{30pt}      if(numero\%\%aux==0)\{\\
+  \hspace{30pt}\hspace{30pt}     primo<-FALSE\}\\
+  \hspace{30pt}     aux=aux-1\\
+ \} \\
+ print(primo)
+ } 
+    \end{column}\pause
+    \begin{column}{6cm}
+      \texttt{>Ehprimo<-function(numero)\{\\
+aux<-numero-1\\
+ primo<-TRUE\\
+ while(primo==TRUE \& aux>1)\{\\
+ \hspace{30pt}      if(numero\%\%aux==0)\{\\
+  \hspace{30pt}\hspace{30pt}     primo<-FALSE\}\\
+  \hspace{30pt}     aux=aux-1\\
+ \}
+ return(primo)\\
+\}\\ \vspace{10pt}
+> Ehprimo(13)\\
+~[1] TRUE
+ } 
+    \end{column}
+\end{columns}
+ 
+\end{frame}
+\begin{frame}{Exemplo}
+\texttt{media <-function(x)\\
+\hspace{30pt} \{\\
+\hspace{30pt} soma=sum(x)\\
+\hspace{30pt} nobs=length(x)\\
+\hspace{30pt} media=soma/nobs\\
+\hspace{30pt} return(media)\\
+\hspace{30pt}\}}
+  
+\end{frame}
+\begin{frame}{Uma função é um objeto}
+
+Como qualquer objeto criado uma função é listada no espaço de trabalho.
+\texttt{>ls()\\
+~[1] Ehprimo media  \dots}\\ \vspace{10pt}
+\pause Da classe \texttt{function}
+
+\texttt{> class(Ehprimo)\\
+~[1] "function"}
+  
+\end{frame}
+
+\begin{frame}{Escopo dos objetos de uma função}
+
+Objetos criados dentro de uma função só existem dentro da mesma função. 
+
+\begin{columns}
+  \begin{column}{6cm}
+    \texttt{> media <-function(x)\\
+      \hspace{30pt} \{\\
+      \hspace{30pt} soma=sum(x)\\
+      \hspace{30pt} nobs=length(x)\\
+      \hspace{30pt} media=soma/nobs\\
+      \hspace{30pt} return(media)\\
+      \hspace{30pt}\} \\
+      > media(c(3,4,5))\\
+      ~[1] 4 \\
+      > soma\\
+      Erro: objeto 'soma' não encontrado} \pause
+  \end{column}
+
+  \begin{column}{6cm}
+    \texttt{> mediaEsoma <-function(x)\\
+      \hspace{30pt} \{\\
+      \hspace{30pt} soma=sum(x)\\
+      \hspace{30pt} nobs=length(x)\\
+      \hspace{30pt} media=soma/nobs\\
+      \hspace{30pt} return(c(media,soma))\\
+      \hspace{30pt}\} \\
+      > mediaEsoma(c(3,4,5))\\
+      ~[1]  4 12\\
+ \# Não criou o objeto ``soma'' apenas retornou o valor.}
+   
+  \end{column}
+\end{columns}
+\end{frame}
+\begin{frame}{Escopo dos objetos de uma função}
+Objetos criados fora de uma função estão disponíveis para uma função: 
+
+\texttt{> soma<-sum(c(3,4,5))\\
+>media2 <-function(x)\\
+\hspace{30pt} \{\\
+\hspace{30pt} nobs=length(x)\\
+\hspace{30pt} media=soma/nobs\\
+\hspace{30pt} return(media)\\
+\hspace{30pt}\}\\
+media2(c(3,4,5))\\
+~[1] 4}
+\pause 
+
+Cuidado! Quando criar uma função sempre declare os argumentos entre (). Esperar que um objeto exista fora da função é fonte de problemas.
+\end{frame}
+
+
+
+
+\section{Erros de programação}
+\begin{frame}{Erros no programa}
+Encontrar um erro em um programa é algo bem comum. Nem sempre o  programa emite um sinal de alerta. O usuário precisa estar atento para detectar e corrigir erros.
+  
+\end{frame}
+\subsection{Correção de erros}
+\begin{frame}{Depuração do código}
+ Do inglês ``\textit{Debugging}'',
+ \begin{itemize}
+ \item  Remover impurezas, sujidade ou imperfeições; tornar(-se)
+   puro. = LIMPAR, PURIFICAR
+
+   \item Limpar(-se) de falhar moral. = EXPURGAR, PURIFICAR
+
+   \item  Tornar(-se) melhor em alguma coisa. = APERFEIÇOAR,
+   APRIMORAR, APURAR
+
+   \item Detectar e eliminar erros em programa de computador
+ \end{itemize}
+.
+
+\textit{ in Dicionário Priberam da Língua Portuguesa [em linha], 2008-2013, http://www.priberam.pt/dlpo/depurar [consultado em 17-07-2014]}.  
+
+\end{frame}
+
+\begin{frame}{Princípios de depuração}
+  \begin{quote}
+    Beware of bugs in the above code, I have only proved it correct, not tried it.\\
+    \begin{flushright}
+      Donald Knuth
+    \end{flushright}
+  \end{quote}
+  \begin{enumerate}
+  \item Confirme
+  \item Comece pequeno
+  \item Depure de forma modular
+  \end{enumerate}
+  \begin{flushright}
+    In: Norman Matloff. The Art of R programming,\\ No Starch press, 2011
+  \end{flushright}
+\end{frame}
+
+\begin{frame}{Confirmação}
+ 
+Confirme \textit{um-por-um} cada aspecto que você considera verdade sobre o código se \textit{é realmente} verdade.
+
+\texttt{> a<- 10 \\
+> b<-20 \\
+> a<-b\\
+> b<-a\\ \pause
+> b \\
+~[1] 20}
+  \end{frame}
+
+  \begin{frame}{Começar pequeno}
+Quando iniciar o processo de depuração faça testes pequenos com casos simples. Teste cada função ou trecho do código. \\ \pause
+
+Depois teste com conjuntos de dados maiores e vários funções ao mesmo tempo. 
+   \end{frame}
+
+   \begin{frame}{Depure de forma modular}
+
+     \begin{itemize}[<+->]
+     \item Escreva o código em forma de módulos e depois depure cada
+       módulo.
+     \item Faça funções que executem cada módulo, teste cada uma
+       em separado.
+     \item Faça um código principal curto com apenas os
+       passos principais, deixe as funções que você criou em outro
+       arquivo.
+     \end{itemize}
+\pause
+
+\texttt{source(funcoes.r)\\
+ dados<-read.table(\dots)\\
+ permutacao<-teste.permutacao(dados)\\
+ chi<- testdochi(dados)\\
+ resultado<-list(permutacao,chi)\\
+ write.table(\dots)
+}
+     
+   \end{frame}
+\subsection{Ferramentas de depuração}
+\begin{frame}{Ferramentas de depuração}
+  O R possui algumas ferramentas que auxiliam na correção e detecção
+  de erros.
+  \begin{block} {Pare se não}
+    \# Para a execução se a condição não for satisfeita\\
+    stopifnot(condição)
+  \end{block}
+
+  \texttt{for(i in 1:10)\{\\
+      \hspace{30pt}  cat(i)\\
+      \hspace{30pt} stopifnot(i>5)\\
+    \}\\
+    1\\
+    Erro: i > 5 is not TRUE }
+\end{frame}
+\begin{frame}{Ferramentas de depuração}
+
+  \begin{block}{Ferramenta\texttt{ debug}}
+  \# Marca uma função para ser depurada.\\
+   debug(função)\\ \vspace{10pt}
+   \# Desmarca uma função da depuração\\
+   undebug(função)
+  \end{block}
+Toda vez que se executa uma função que está marcada para ser depurada é feita a depuração linha por linha da função.
+  \end{frame}
+
+  \begin{frame}{Exemplo}
+Usando a função \texttt{media} criada na aula anterior.\\
+\texttt{> debug(media)\\
+> media(c(1,2,3))\\
+debugging in: media(c(1, 2, 3))\\
+debug em \#2: \{\\
+    soma = sum(x)\\
+    nobs = length(x)\\
+    media = soma/nobs\\
+    return(media)\\
+\}\\}
+\end{frame}
+\begin{frame}{Exemplo (cont.)}
+  \begin{columns}
+    \begin{column}{6cm}
+      \texttt{Browse[2]> \\
+        debug em \#3: soma = sum(x)\\
+        Browse[2]> \\
+        debug em \#4: nobs = length(x)\\
+        Browse[2]> \\
+        debug em \#5: media = soma/nobs\\
+        Browse[2]> \\
+        debug em \#6: return(media)\\
+        Browse[2]> \\
+        exiting from: media(c(1, 2, 3))\\
+        ~[1] 2\\
+        undebug(media)}
+    \end{column}
+    \begin{column}{6cm}
+\pause
+\begin{itemize}
+\item Executa linha por linha da função;
+\item Possibilita ver cada objeto intermediário;
+\item Digite ``Q'' para sair antes do final;
+\item Não esqueça de desmarcar.
+\end{itemize}
+   \end{column}
+  \end{columns}
+  \end{frame}
+
+  \begin{frame}{Ferramentas de depuração}
+
+    \begin{block}{Ferramenta \texttt{browser}}
+    \# Executa o \texttt{debug} uma única vez a partir de uma linha específica \\
+    funcao<-function(argumentos)\{\\
+  \hspace{30pt}\ldots\\
+  \hspace{30pt} browser()\\
+  \hspace{30pt}\ldots\\
+   \hspace{30pt}return( \dots)\\
+\}    
+    \end{block}
+    
+  \end{frame}
+  \begin{frame}{Exemplo}
+\texttt{> media <-function(x)\\
+\hspace{20pt}    \{\\
+\hspace{20pt}\hspace{20pt}        soma=sum(x)\\
+\hspace{20pt}\hspace{20pt}        nobs=length(x)\\
+\hspace{20pt}\hspace{20pt}        browser()\\
+\hspace{20pt}\hspace{20pt}        media=soma/nobs\\
+ \hspace{20pt}\hspace{20pt}       return(media)\\
+\hspace{20pt}    \}
+> media(c(1,2,3))\\
+Called from: media(c(1, 2, 3))\\
+Browse[1]> \\
+debug em \#6: media = soma/nobs\\
+Browse[2]>\\ 
+debug em \#7: return(media)\\
+Browse[2]> \\
+~[1] 2}    
+  \end{frame}
+
+
+\section{Otimização de programa}
+
+\begin{frame}{Definição}
+  \begin{block}{Otimização de programa}
+É um processo de modificação de um programa para que ele trabalhe de forma mais eficiente ou com menos recursos.     
+  \end{block}
+\pause
+Um programa pode ser otimizado para que ele seja mais rápido ou capaz de operar com menos memória ou outros recursos. Aumentando a eficiência do programa.
+  
+\end{frame}
+\begin{frame}{Avisos sobre otimização}
+  \begin{quote}
+    ``Premature optimization is the root of all evil.'' \\
+    \begin{flushright}
+      Donald Knuth
+    \end{flushright}
+  \end{quote}
+
+  \begin{itemize}[<+->]
+  \item Você precisa otimizar?
+  \item Um código apenas 2 ou 3 vezes mais rápido pode não compensar o trabalho;
+  \item Um código que seja 10 vezes mais rápido pode compensar;
+  \item Antes de otimizar você precisa ter um código que funcione!
+  \end{itemize}  
+\end{frame}
+\begin{frame}{Otimizando um código}{Evite a \texttt{repetição}}
+Comandos de repetição (principalmente o \texttt{for} gastam muito tempo para serem executados. Evite-os!. Tente usar outras abordagens:
+\begin{itemize}
+\item Funções \texttt{apply, tapply,aggregate, etc}
+\item Lembre-se que operações com vetor são feitas elemento por elemento. Não é necessário \texttt{for()} em muitas situações.
+\end{itemize}
+\texttt{>for(i in 1:length(numeros))\{\\
+\hspace{10pt} aux[i]<-numeros[i]/2\\
+\} \\ \vspace{10pt}
+\# Versão mais rápida\\
+aux<-numeros/2}
+ 
+\end{frame}
+
+\begin{frame}{Otimizando o código}{Escrevendo funções}
+  \begin{itemize}[<+->]
+  \item Escreva uma função que faça apenas o que você quer;
+  \item Faça uma versão compilada da sua função ex: \texttt{cmpfun(função)}
+   \item Escreva funções  pequenas e importantes em \texttt{C} e use elas pelo \texttt{R};
+ 
+  
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Otimizando o código}{Preparando os dados}
+  \begin{itemize}
+   \item Prefira usar matrizes ao invés de  data frame;
+     \item Limpe os dados antes e então use funções mais simples ex: \texttt{sum(x)/length(x)} é mais rápido que \texttt{mean(x)} pois não tem verificação de erros.
+\item Se possível, divida os dados em conjuntos menores, analise separadamente e depois junte as respostas \textit{Computação paralela}. Vários pacotes ajudam a fazer isso.
+  \end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Medindo o tempo}
+
+Com a função \texttt{system.time()} é possível saber quando tempo demora pra executar uma função. Use para comparar entre duas funções.\\
+
+
+\texttt{>system.time(Ehprimo(4001))}\\
+ \begin{tabular}{c c c}
+  usuário &  sistema &decorrido \\
+    0.012  &   0.000 &    0.012\\
+  \end{tabular}\\ \pause
+\texttt{>  system.time(Ehprimo(400001))}\\
+  \begin{tabular}{c c c}
+  usuário &  sistema &decorrido \\
+    1.133  &   0.000 &    1.134\\
+  \end{tabular}\\
+
+
+  
+\end{frame}
+
+
+\end{document}
