@@ -1,0 +1,166 @@
+\documentclass[handout]{beamer}
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usepackage[latin1]{inputenc}
+%\documentclass[ucs]{beamer}%para sistemas com ucs
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+\usepackage{pgf}
+
+ \usepackage[scaled]{helvet}
+ \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+ \usepackage[T1]{fontenc}
+
+%\usepackage[utf8x]{inputenc}%idem
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usetheme{Unicamp}%
+\usecolortheme{dolphin}
+%\usecolortheme{seahorse}
+\usefonttheme[onlysmall]{structurebold}
+
+\title[Linguagem R]{R para iniciantes\\ Aula VI Boas Práticas}
+\author {Carlos Henrique Tonhatti}
+\institute[Unicamp]{Universidade Estadual de Campinas}
+\date{}
+
+
+
+ \AtBeginSection[]
+ {
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Sumário}
+
+       \tableofcontents[currentsection,currentsubsection]
+       \setcounter{tocdepth}{2}
+   \end{frame}
+}
+
+
+\begin{document}
+%para criar a pagina de rosto
+\frame{\titlepage} %inclui a front page 
+
+%==================================================slide
+\begin{frame}
+  \frametitle{Dúvidas da última Aula?}
+\end{frame}
+
+% cria o sumario
+\begin{frame}
+ \frametitle{Sumário}
+ \tableofcontents[pausesections]
+  \setcounter{tocdepth}{2}% profundidade do sumario 
+\end{frame}
+%-------------------------------------------------------
+%==================================================slide
+
+
+\section{Boas práticas }
+
+\begin{frame}{Boas práticas para lidar com projetos de dados}
+
+\begin{itemize}
+\item Comece cada programa com  a descrição sobre o que ele faz
+  
+\item Carregue todos os pacotes necessários logo no inicio
+  
+\item Considere que você está no diretório de trabalho.
+  
+\item  Comente as sessões de seu código
+  
+\item Coloque as definições  de funcoes no inicio do arquivo, ou em um arquivo separado
+  
+\item Use nomes e estilo de forma consistente
+\item Quebre o código em pedaços pequenos 
+  
+\item Não altere os dados brutos
+
+\item Sempre inicie um ambiente limpo ao invés de salvar o workspace (!)
+  
+\item Mantenha o registro das sessões
+  
+\item Tenha alguém para rever o código
+  
+\item Use controle de versão
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Princípios ao lidar com análise de dados}
+
+  \begin{itemize}
+    
+  \item Transparência: Organização lógica das unidades.
+  \item Manutenção: Padronização e comentários objetivos.
+    
+  \item Modularidade: Separe em unidades lógicas.
+    
+  \item Portabilidade: use caminhos relativos, minimize dependências, deixe a dependências claras.
+    
+  \item Reprodutibilidade: Facilidade em repetir os resultados
+
+    
+  \item Eficiência para manter e modificar 
+    \end{itemize}
+
+   
+\end{frame}
+
+\begin{frame}[fragile=singleslide]{No inicio do texto}
+
+     Faća um cabelćalho identificando o que vai fazer e quais são as dependencias
+
+   
+  \begin{verbatim}
+      ##  Ánalise de variancia em populacoes de ..
+      ## Fulano da Silva 
+      # 18/2/2019 
+ 
+      # Pacotes
+        require(ggplot)
+        require(MASS)
+
+      # Funcoes
+        source(funcoes.r)
+
+      # Dados de entrada
+        input<-"dados/medicoes.txt"
+       \end{verbatim}
+    
+  \end{frame}
+
+
+  \begin{frame}{Anatomia da pasta de trabalho}
+
+    Use nomes de diretorios/ pastas de forma padrão para guardar os arquivos
+
+    \begin{description}
+      
+    \item[Dados brutos] Pasta com os dados mais simples, menos manipulado
+    \item[Dados processados] Dados limpos, transformados pronto para analise
+      
+    \item[Gráficos] Guardar os gráficos
+      
+    \item[doc] Documentaćao sobre o projeto, sobre os dados, artigos e rascunhos etc 
+    \item[Relatorios] Relatorios gerados sobre os dados   
+    \end{description}
+
+    Além disso, vale a pena ter um arquivo Leiame.txt como um pequeno resumo do projeto. E um arquivo ParaFazer.txt.
+    
+    \end{frame}
+
+
+    \begin{frame}
+
+      \end{frame}
+\end{document}

@@ -1,0 +1,318 @@
+\documentclass[handout]{beamer}
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+
+%\usepackage[latin1]{inputenc}
+%\documentclass[ucs]{beamer}%para sistemas com ucs
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{tikz}   %TikZ is required for this to work.  Make sure this exists before the next line
+\usepackage{pgf}
+
+ \usepackage[scaled]{helvet}
+ \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+ \usepackage[T1]{fontenc}
+
+%\usepackage[utf8x]{inputenc}%idem
+\usepackage[brazil]{babel}
+\usepackage{verbatim}
+\usetheme{Unicamp}%
+\usecolortheme{dolphin}
+%\usecolortheme{seahorse}
+\usefonttheme[onlysmall]{structurebold}
+
+\title[Linguagem R]{R para iniciantes\\ Aula VI Boas Práticas}
+\author {Carlos Henrique Tonhatti}
+\institute[Unicamp]{Universidade Estadual de Campinas}
+\date{}
+
+
+
+ \AtBeginSection[]
+ {
+\begin{frame}
+\frametitle{Sumário}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+   \begin{frame}
+       \frametitle{Sumário}
+
+       \tableofcontents[currentsection,currentsubsection]
+       \setcounter{tocdepth}{2}
+   \end{frame}
+}
+
+
+\begin{document}
+%para criar a pagina de rosto
+\frame{\titlepage} %inclui a front page 
+
+%==================================================slide
+\begin{frame}
+  \frametitle{Dúvidas da última Aula?}
+\end{frame}
+
+% cria o sumario
+\begin{frame}
+ \frametitle{Sumário}
+ \tableofcontents[pausesections]
+  \setcounter{tocdepth}{2}% profundidade do sumario 
+\end{frame}
+%-------------------------------------------------------
+%==================================================slide
+
+
+\section{Boas práticas }
+
+\begin{frame}{Boas práticas para lidar com projetos de dados}
+
+\begin{itemize}
+\item Comece cada programa com  a descrição sobre o que ele faz
+  
+\item Carregue todos os pacotes necessários logo no inicio
+  
+\item Considere que você está no diretório de trabalho.
+  
+\item  Comente as sessões de seu código
+  
+\item Coloque as definições  de funções no inicio do arquivo, ou em um arquivo separado
+  
+\item Use nomes e estilo de forma consistente
+\item Quebre o código em pedaços pequenos 
+  
+\item Não altere os dados brutos
+
+\item Sempre inicie um ambiente limpo ao invés de salvar o workspace (!)
+  
+\item Mantenha o registro das sessões
+  
+\item Tenha alguém para rever o código
+  
+\item Use controle de versão
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Princípios ao lidar com análise de dados}
+
+  \begin{itemize}
+    
+  \item Transparência: Organização lógica das unidades.
+  \item Manutenção: Padronização e comentários objetivos.
+    
+  \item Modularidade: Separe em unidades lógicas.
+    
+  \item Portabilidade: use caminhos relativos, minimize dependências, deixe a dependências claras.
+    
+  \item Reprodutibilidade: Facilidade em repetir os resultados
+
+    
+  \item Eficiência para manter e modificar 
+    \end{itemize}
+
+   
+\end{frame}
+
+
+
+
+  \begin{frame}{Anatomia da pasta de trabalho}
+
+    Use nomes de diretórios/ pastas de forma padrão para guardar os arquivos
+
+    \begin{description}
+      
+    \item[Dados brutos] Pasta com os dados mais simples, menos manipulado
+    \item[Dados processados] Dados limpos, transformados pronto para analise
+      
+    \item[Gráficos] Guardar os gráficos
+      
+    \item[doc] Documentação sobre o projeto, sobre os dados, artigos e rascunhos etc 
+    \item[Relatórios] Relatórios gerados sobre os dados   
+    \end{description}
+
+    Além disso, vale a pena ter um arquivo Leiame.txt como um pequeno resumo do projeto. E um arquivo ParaFazer.txt.
+    
+    \end{frame}
+
+\section{Controle de versão}
+    \begin{frame}{Controle de Versão}
+
+        
+      \begin{center}
+        Muito mais que um simples backup em nuvem 
+  \pgfdeclareimage[width=6cm]{github}{github}
+  \pgfuseimage{github}
+\end{center}
+
+      
+
+\end{frame}
+
+
+\begin{frame}{Mais sobre o GitHub}
+  \begin{itemize}
+  \item Você pode escolher e colocar o repo como privado. Há licença educacional para isso.
+    
+  \item Instalar no windows \url{https://dicasdeprogramacao.com.br/como-instalar-o-git-no-windows/}
+
+
+    
+  \item Um pequeno tutorial em PT-BR \url{https://rogerdudler.github.io/git-guide/index.pt_BR.html}
+
+    
+  \item O livro \url{https://git-scm.com/book/pt-br/v2}
+
+    \end{itemize}
+
+  \end{frame}
+
+
+
+  \section{Rmarkdown}
+
+  \begin{frame}{Rmarkdown}
+
+    Uma linguagem de marcação de texto que gera relatórios dinâmicos. Facilita o trabalho de comunicação de resultados e aumenta a transparência da análise.
+
+    
+  \end{frame}
+
+
+  \section{\dots e continua}
+\begin{frame}{Assuntos que não foram cobertos pelo curso}
+ Assuntos que não foram cobertos pelo curso e podem ser necessários dependendo do projeto.   
+\begin{itemize}[<+->]
+  \item Estatística (geral);
+  \item Matemática (geral);
+  \item Iteração e recursão (otimização, solução de problemas);
+  \item Manipulação de palavras ``strings'' e expressão regular ( trabalhando com texto);
+  \item Interação com outras linguagens (geral);
+  \item Banco de dados (trabalhando com muitos dados);
+  \item Computação paralela (otimização).
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Pacotes }
+  \begin{itemize}
+  \item dplyr, tidyr, readr, ggplot2 tidyverse
+  \item stringr, stringi, ``regex''
+  \item popgenreport, ape, ade4, pegas hierfstat
+  \item vegan, MASS, caret    
+  \item doParallel
+    
+  \item roxigen2
+    \end{itemize}
+
+  \end{frame}
+
+
+  \section{Trabalho final}
+\begin{frame}{Trabalho final}
+  O trabalho final da disciplina tem o objetivo de desenvolver programas que realizem análises mais completas que as vistas durante o curso. Cada trabalho dá ao aluno a chance de aprender algo novo. \\
+
+
+  
+  A seguir algumas propostas de Projeto, se tiver alguma outra ideia pode falar 
+
+\end{frame}
+
+\begin{frame}{Proposta 1}{Reconstrução filogenética}
+\textbf{Reconstrução filogenética usando sequências do GenBank}\\
+   Fonte:  Analysis of Phylogenetics and Evolution with R.\\
+           Emmanuel Paradis. páginas:46--50, 121--125 ``Caso Sylvia''
+           \begin{center}
+             \pgfdeclareimage[width=6cm]{sylvia}{sylvia}
+             \pgfuseimage{sylvia}
+             \end{center}
+ 
+\end{frame}
+\begin{frame}{Proposta 2}{Modelagem de crescimento}
+\textbf{Crescimento independente de densidade} \\
+    Fonte : A primer of ecology with R.\\
+          M. Henry H. Stevens. Cap. 1. Problema 1.1 
+   
+\end{frame}
+
+\begin{frame}{Proposta 3}{Seleção de modelos}
+\textbf{Seleção de modelos por verossimilhança}\\
+   Fonte: \url{http://cmq.esalq.usp.br/BIE5781/doku.php?id=07-selecao:07-selecao}  
+\end{frame}
+
+
+\begin{frame}{Proposta 4}{Análise Exploratória de dados}
+
+
+\begin{itemize}
+\item Compreender como são os dados. Estatísticas de sumário. Como estão distribuídos, há padrões?
+\item dados \url{https://archive.ics.uci.edu/ml/datasets/student+performance}
+
+  
+\item  Se quiser tentar uma PCA \url{https://www.r-bloggers.com/computing-and-visualizing-pca-in-r/}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proposta 5}
+  \textbf{Bibliometria}\\
+
+  \begin{itemize}
+  \item Usar o pacote bibliometrix \url{https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html}
+    
+  \item Usar uma palavra-chave da tua areá
+  \item Criar gráficos: quem produz mais, mais citações, co-citação 
+  \item Gerar rede de co-citação.
+    \end{itemize}
+
+  
+  \end{frame}
+
+\begin{frame}{Entrega}
+  \begin{itemize}
+  \item 21 dias para entregar por email
+  \item Em pdf (com Rmarkdown) com todos os arquivos necessários
+   
+  \item Repositório do Github ou pasta zipada
+
+  \item Roteiro
+    \begin{itemize}
+      
+    \item Introdução (1 paragrafo)
+    \item Requerimentos (pacotes)
+      
+    \item Desenvolvimento
+    \item Respostas encontradas (1 paragrafo)
+      
+    \item Dificuldades encontradas
+      
+    \item Bibliografia (sem formato definido)
+    \end{itemize}
+    Pode acrescentar itens se quiser.
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{O que se espera}
+    \begin{enumerate}
+    \item  Dentro do prazo.
+    \item Uso de Rmarkdown/PDF.
+    \item Dentro do roteiro
+      
+    \item No PDF, todas as linhas de código de R aparecerem sem cortes
+    \item Estilo de escrita do código, identação, clareza.
+      
+    \item Comentários no código, se criar alguma função comentar o que faz, qual entrada e qual a saída
+    \item Github ou zipado com todos os arquivos necessários.
+      
+    \item Reprodutibilidade, o arquivo .rmd gera o PDF apresentado?
+      
+    \item Texto do documento.
+      
+    \end{enumerate}
+
+    Nota: Cada item vale um ponto. Todas as atividades do Swirl somam um ponto a média. 
+  \end{frame}
+  
+\end{document}

@@ -1,0 +1,19 @@
+  ##  Ánalise de variancia em populacoes de ..
+      ## Fulano da Silva 
+      # 18/2/2019 
+ 
+      # Pacotes
+        require(ggplot)
+        require(MASS)
+
+      # Funcoes
+        source(funcoes.r)
+
+      # Dados de entrada
+     input<-"dados/medicoes.txt"
+
+
+
+## Funcao que faz a media e soma
+# INPUT  x um vetor de numero
+# Output  um escalar com a media

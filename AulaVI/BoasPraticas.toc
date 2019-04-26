@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Boas pr\IeC {\'a}ticas }{4}{0}{1}
+\beamer@sectionintoc {2}{Controle de vers\IeC {\~a}o}{8}{0}{2}
+\beamer@sectionintoc {3}{Rmarkdown}{11}{0}{3}
+\beamer@sectionintoc {4}{\dots e continua}{13}{0}{4}
+\beamer@sectionintoc {5}{Trabalho final}{16}{0}{5}
