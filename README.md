@@ -81,7 +81,9 @@ Para facilitar a correção e acompanhamento das tarefas este curso vai fazer us
 # instalar o pacote swirl e outros pacotes necessários.
 
 install.packages("swirl")
-install.packages("googlesheets")
+install.packages("devtools")
+require(devtolls)
+install_github("tidyverse/googlesheets4")
 install.packages("base64enc")
 install.packages("httr")
 
@@ -163,15 +165,19 @@ Selection:
  Na primeira vez que você usar será necessario atenticar usando uma conta Google. Para isso, será aberto de forma automática um página para você permitir o acesso. 
  
 ```r
-Preparando o envio ...
-Worksheets feed constructed with private visibility
-Waiting for authentication in browser...
-Press Esc/Ctrl + C to abort
+Auto-refreshing stale OAuth token.
+Writing to 'Curso R -2020 '
+Appending 1 row(s) to 'Respostas'
+Spreadsheet name: Curso R -2020 
+                ID: 1pawl9xGARVHsHIHkXb8bDOFihw1_FL-Fh5TXbluHjbQ
+            Locale: pt_BR
+         Time zone: America/Sao_Paulo
+       # of sheets: 1
 
-Worksheets feed constructed with private visibility
-Row successfully appended.
+(Sheet name): (Nominal extent in rows x columns)
+   Respostas: 482 x 9
 
-| All that hard work is paying off!
+| You got it!
 
 | You've reached the end of this lesson! Returning to the main menu...
 
@@ -179,7 +185,7 @@ Row successfully appended.
 
 
 ```
- Se a mensagem "Row successfully appended" aparecer é sinal que deu tudo certo.
+ Se a mensagem acima aparecer é sinal que deu tudo certo.
  
 Se tiver problemas de enviar na primeira vez, peço que feche o R e tente novamente. Se persistir peço que rode o comando sessionInfo() e me envie a reposta do comando  por email.
 
