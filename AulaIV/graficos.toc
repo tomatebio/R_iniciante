@@ -1,5 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {brazil}
+\babel@toc {brazil}{}
 \beamer@sectionintoc {1}{Apresenta\IeC {\c c}\IeC {\~a}o de dados em gr\IeC {\'a}ficos}{7}{0}{1}
 \beamer@sectionintoc {2}{Gr\IeC {\'a}ficos simples no R}{28}{0}{2}
 \beamer@subsectionintoc {2}{1}{Dispositivos gr\IeC {\'a}ficos}{29}{0}{2}

@@ -1,13 +1,12 @@
-\beamer@endinputifotherversion {3.36pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {0}{0}{3}{3/6}{}{0}}
 \headcommand {\beamer@framepages {3}{6}}
-\headcommand {\sectionentry {1}{Apresenta\IeC {\c c}\IeC {\~a}o de dados em gr\IeC {\'a}ficos}{7}{Apresenta\IeC {\c c}\IeC {\~a}o de dados em gr\IeC {\'a}ficos}{0}}
 \headcommand {\beamer@sectionpages {1}{6}}
 \headcommand {\beamer@subsectionpages {1}{6}}
+\headcommand {\sectionentry {1}{Apresenta\IeC {\c c}\IeC {\~a}o de dados em gr\IeC {\'a}ficos}{7}{Apresenta\IeC {\c c}\IeC {\~a}o de dados em gr\IeC {\'a}ficos}{0}}
 \headcommand {\slideentry {1}{0}{1}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
 \headcommand {\slideentry {1}{0}{2}{8/8}{}{0}}
@@ -20,12 +19,13 @@
 \headcommand {\beamer@framepages {17}{26}}
 \headcommand {\slideentry {1}{0}{6}{27/27}{}{0}}
 \headcommand {\beamer@framepages {27}{27}}
-\headcommand {\sectionentry {2}{Gr\IeC {\'a}ficos simples no R}{28}{Gr\IeC {\'a}ficos simples no R}{0}}
 \headcommand {\beamer@sectionpages {7}{27}}
 \headcommand {\beamer@subsectionpages {7}{27}}
+\headcommand {\sectionentry {2}{Gr\IeC {\'a}ficos simples no R}{28}{Gr\IeC {\'a}ficos simples no R}{0}}
 \headcommand {\slideentry {2}{0}{1}{28/28}{}{0}}
 \headcommand {\beamer@framepages {28}{28}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{29}{Dispositivos gr\IeC {\'a}ficos}}\headcommand {\beamer@subsectionpages {28}{28}}
+\headcommand {\beamer@subsectionpages {28}{28}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{29}{Dispositivos gr\IeC {\'a}ficos}}
 \headcommand {\slideentry {2}{1}{1}{29/29}{Dispositivos gr\IeC {\'a}ficos}{0}}
 \headcommand {\beamer@framepages {29}{29}}
 \headcommand {\slideentry {2}{1}{2}{30/30}{Dispositivos gr\IeC {\'a}ficos}{0}}
@@ -34,7 +34,8 @@
 \headcommand {\beamer@framepages {31}{31}}
 \headcommand {\slideentry {2}{1}{4}{32/32}{Dispositivos gr\IeC {\'a}ficos}{0}}
 \headcommand {\beamer@framepages {32}{32}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{33}{Fun\IeC {\c c}\IeC {\~o}es gr\IeC {\'a}ficas}}\headcommand {\beamer@subsectionpages {29}{32}}
+\headcommand {\beamer@subsectionpages {29}{32}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{33}{Fun\IeC {\c c}\IeC {\~o}es gr\IeC {\'a}ficas}}
 \headcommand {\slideentry {2}{2}{1}{33/33}{Fun\IeC {\c c}\IeC {\~o}es gr\IeC {\'a}ficas}{0}}
 \headcommand {\beamer@framepages {33}{33}}
 \headcommand {\slideentry {2}{2}{2}{34/34}{Fun\IeC {\c c}\IeC {\~o}es gr\IeC {\'a}ficas}{0}}
@@ -69,12 +70,13 @@
 \headcommand {\beamer@framepages {49}{49}}
 \headcommand {\slideentry {2}{2}{17}{50/50}{Fun\IeC {\c c}\IeC {\~o}es gr\IeC {\'a}ficas}{0}}
 \headcommand {\beamer@framepages {50}{50}}
-\headcommand {\sectionentry {3}{Gr\IeC {\'a}ficos m\IeC {\'e}dios no R}{51}{Gr\IeC {\'a}ficos m\IeC {\'e}dios no R}{0}}
 \headcommand {\beamer@sectionpages {28}{50}}
 \headcommand {\beamer@subsectionpages {33}{50}}
+\headcommand {\sectionentry {3}{Gr\IeC {\'a}ficos m\IeC {\'e}dios no R}{51}{Gr\IeC {\'a}ficos m\IeC {\'e}dios no R}{0}}
 \headcommand {\slideentry {3}{0}{1}{51/51}{}{0}}
 \headcommand {\beamer@framepages {51}{51}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{52}{Esquemas de cores}}\headcommand {\beamer@subsectionpages {51}{51}}
+\headcommand {\beamer@subsectionpages {51}{51}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{52}{Esquemas de cores}}
 \headcommand {\slideentry {3}{1}{1}{52/52}{Esquemas de cores}{0}}
 \headcommand {\beamer@framepages {52}{52}}
 \headcommand {\slideentry {3}{1}{2}{53/53}{Esquemas de cores}{0}}
@@ -85,7 +87,8 @@
 \headcommand {\beamer@framepages {55}{55}}
 \headcommand {\slideentry {3}{1}{5}{56/56}{Esquemas de cores}{0}}
 \headcommand {\beamer@framepages {56}{56}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{57}{V\IeC {\'a}rios conjuntos de dados}}\headcommand {\beamer@subsectionpages {52}{56}}
+\headcommand {\beamer@subsectionpages {52}{56}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{57}{V\IeC {\'a}rios conjuntos de dados}}
 \headcommand {\slideentry {3}{2}{1}{57/57}{V\IeC {\'a}rios conjuntos de dados}{0}}
 \headcommand {\beamer@framepages {57}{57}}
 \headcommand {\slideentry {3}{2}{2}{58/58}{V\IeC {\'a}rios conjuntos de dados}{0}}
@@ -98,9 +101,9 @@
 \headcommand {\beamer@framepages {61}{61}}
 \headcommand {\slideentry {3}{2}{6}{62/62}{V\IeC {\'a}rios conjuntos de dados}{0}}
 \headcommand {\beamer@framepages {62}{62}}
-\headcommand {\sectionentry {4}{Exemplos}{63}{Exemplos}{0}}
 \headcommand {\beamer@sectionpages {51}{62}}
 \headcommand {\beamer@subsectionpages {57}{62}}
+\headcommand {\sectionentry {4}{Exemplos}{63}{Exemplos}{0}}
 \headcommand {\slideentry {4}{0}{1}{63/63}{}{0}}
 \headcommand {\beamer@framepages {63}{63}}
 \headcommand {\slideentry {4}{0}{2}{64/64}{}{0}}
@@ -119,4 +122,4 @@
 \headcommand {\beamer@subsectionpages {63}{70}}
 \headcommand {\beamer@sectionpages {63}{70}}
 \headcommand {\beamer@documentpages {70}}
-\headcommand {\def \inserttotalframenumber {50}}
+\headcommand {\gdef \inserttotalframenumber {50}}

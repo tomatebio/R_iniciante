@@ -1,5 +1,15 @@
+x<-c(1:10)
+y<-c(2:11)
+plot(x,y)
+
+plot(rep(1,10))
+
+
+
 ## Função plot
+## 
 png("plot1.png", width=600,height=400)
+
 x<-c(1:10)
 y<-c(2:11)
 plot(x,y)
@@ -32,6 +42,8 @@ plot(Ozone~date, data=airquality,type="h",col=bad)
 dev.off()
 
 png("plot6.png")
+
+x11()
 plot(x,y,type="n")
 axis(4)
 text(8,8,"Comentário")
@@ -50,6 +62,11 @@ plot(1:5,2:6,pch=25)
 plot(1:5,1:5,pch= "p")
 dev.off()
 
+
+par(mfrow=c(1,1))
+?pch
+?par
+
 plot(Ozone~date, data=airquality)
 locator(n=2)
 
@@ -57,6 +74,7 @@ locator(n=2)
 demo(graphics)
 demo(image)
 demo(colors)
+
 require(sp)
 demo(gallery)
 demo(webmap)
