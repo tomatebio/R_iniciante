@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.16)  25 JAN 2020 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.16)  26 JAN 2020 15:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1619,46 +1619,52 @@ Overfull \vbox (0.7214pt too high) detected at line 439
 
  <./plot11.png>] (./graficos.toc) [63
 
-] [64
-
- <./plot12.png>] [65
-
- <./plot13.png>]
-Overfull \vbox (13.96388pt too high) detected at line 498
+]
+Overfull \vbox (5.25859pt too high) detected at line 485
  []
 
-[66
+[64
 
- <./plot14.png (PNG copy)>]
-Overfull \vbox (11.45839pt too high) detected at line 509
+ <./volcano.jpg>] [65
+
+ <./plot12.png>] [66
+
+ <./plot13.png>]
+Overfull \vbox (13.96388pt too high) detected at line 510
  []
 
 [67
 
- <./plot15.png>] [68
+ <./plot14.png (PNG copy)>]
+Overfull \vbox (11.45839pt too high) detected at line 521
+ []
+
+[68
+
+ <./plot15.png>] [69
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 540.
+(Font)              scaled to size 9.49997pt on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 540.
+(Font)              scaled to size 6.64998pt on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 540.
+(Font)              scaled to size 4.74998pt on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 540.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 540.
+(Font)              scaled to size 9.49997pt on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 540.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 540.
+(Font)              scaled to size 6.64998pt on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 540.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 552.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 4.74998pt on input line 540.
- [69
+(Font)              scaled to size 4.74998pt on input line 552.
+ [70
 
-] [70
+] [71
 
 ]
 \tf@nav=\write6
@@ -1670,19 +1676,19 @@ LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 \tf@snm=\write8
 \openout8 = `graficos.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 541.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 541.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 553.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 553.
  (./graficos.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 541.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 541.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 553.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 553.
 Package rerunfilecheck Info: File `graficos.out' has not changed.
 (rerunfilecheck)             Checksum: E84EF74D7AAD7E0D9271E93E5148A5B9;240.
  ) 
 Here is how much of TeX's memory you used:
- 21824 strings out of 494174
- 416676 string characters out of 6159503
+ 21830 strings out of 494174
+ 416738 string characters out of 6159503
  481650 words of memory out of 5000000
- 24497 multiletter control sequences out of 15000+600000
+ 24500 multiletter control sequences out of 15000+600000
  61823 words of font info for 81 fonts, out of 8000000 for 9000
  423 hyphenation exceptions out of 8191
  48i,14n,62p,782b,541s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1696,10 +1702,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /helvetic/uhvro8a.pfb>
-Output written on graficos.pdf (70 pages, 548586 bytes).
+Output written on graficos.pdf (71 pages, 621458 bytes).
 PDF statistics:
- 815 PDF objects out of 1000 (max. 8388607)
- 555 compressed objects within 6 object streams
- 149 named destinations out of 1000 (max. 500000)
- 204 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 825 PDF objects out of 1000 (max. 8388607)
+ 561 compressed objects within 6 object streams
+ 151 named destinations out of 1000 (max. 500000)
+ 209 words of extra memory for PDF output out of 10000 (max. 10000000)
 

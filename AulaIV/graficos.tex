@@ -416,7 +416,7 @@ Pacote \texttt{RColorBrewer}\\
 \end{frame}
 \begin{frame}{Exemplo}
 \texttt{> require(RColorBrewer)\\
-> barplot(x,col=brewer.pal(2,"BrBG"))}
+> barplot(x,col=brewer.pal(8,"BrBG"))}
 
 \begin{center}
   \pgfdeclareimage[width=6cm]{plot9}{plot9} 
@@ -472,6 +472,18 @@ pch=16,col=c("blue","red"))}
 
 \end{frame}
 \section{Exemplos}
+
+\begin{frame}{Auckland's Maunga Whau Volcano}
+  O R possui vários dados (reais ou simulados) para serem usados para testes
+  e tutoriais. Vamos usar o dados topográficos do vulcão Maunga Whau.
+
+  \begin{center}
+    \pgfdeclareimage[width=8cm]{volcano}{volcano}
+    \pgfuseimage{volcano}
+  \end{center}
+  
+\end{frame}
+
 \begin{frame}{\textit{heatmap}}
   \texttt{> image(volcano)}
   \begin{center}
@@ -497,9 +509,9 @@ pch=16,col=c("blue","red"))}
 \end{center}
 \end{frame}
 
-\begin{frame}{Pacote \texttt{maptools} e \texttt{sp}}
-\texttt{> mapa=readShapePoly("BRASIL")\\
-> hidro=readShapeLines("hidrografia")\\
+\begin{frame}{Pacote \texttt{maptools}, \texttt{sp} e \texttt{rgdal}}
+\texttt{> mapa=readOGR("BRASIL.shp")\\
+> hidro=readOGR("hidrografia.shp")\\
 > plot(mapa)\\
 > par(new=T)\\
 > plot(hidro,col="blue")}

@@ -77,14 +77,14 @@ demo(colors)
 
 require(sp)
 demo(gallery)
-demo(webmap)
 
 
 
-hdf <- get_map("houston, texas")
-ggmap(hdf, extent = "normal")
-ggmap(hdf) # extent = "panel", note qmap defaults to extent = "device"
-ggmap(hdf, extent = "device")
+bad<-ifelse(airquality$Ozone>=90,"orange","forestgreen")
+plot(Ozone~date, data=airquality,type="h",col=bad)
+
+
+
 ###
 plot(Ozone~date, data=airquality, type="h", 
      main="Qualidade do ar",xlab="data",ylab="Ozônio",col="red")
@@ -121,6 +121,7 @@ example(RColorBrewer)
 png("plot9.png")
 require(RColorBrewer)
 barplot(x,col=brewer.pal(8,"BrBG"))
+barplot(x,col=brewer.pal(3,"BrBG"))
 dev.off()
 
 
@@ -146,6 +147,8 @@ dev.off()
 map('world', fill = TRUE, col=brewer.pal(8,"BrBG"))
 
 png("plot15.png")
+
+
 require(maptools)
 require(sp)
 mapa=readShapePoly("BRASIL")
@@ -158,8 +161,7 @@ par(new=T)
 plot(hidro,col="blue")
 dev.off()
 
-plot("plot16.png")
-require(ggmap)
+
 
 
 
