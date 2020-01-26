@@ -15,6 +15,18 @@ y<-c(2:11)
 plot(x,y)
 dev.off()
 
+png("boxplot.png", width=600,height=400)
+numeros<- rnorm(10000)
+boxplot(numeros)
+dev.off()
+
+png("histograma.png", width=600,height=400)
+numeros<-rnorm(10000)
+hist(numeros)
+dev.off()
+
+
+
 data(airquality)
 names(airquality)
 airquality$date<-with(airquality,ISOdate(1973,Month,Day))
@@ -129,6 +141,8 @@ png("plot11.png")
 coplot(Ozone~Solar.R|Temp*Wind, number=c(4,4),data=airquality, pch=21)
 dev.off()
 
+
+
 png("plot12.png",width=600,height=400)
 image(volcano)
 dev.off()
@@ -147,12 +161,12 @@ dev.off()
 map('world', fill = TRUE, col=brewer.pal(8,"BrBG"))
 
 png("plot15.png")
-
-
 require(maptools)
 require(sp)
-mapa=readShapePoly("BRASIL")
-hidro=readShapeLines("hidrografia")
+require(rgdal)
+
+mapa<-readOGR("BRASIL.shp")
+hidro=readOGR("hidrografia.shp")
 summary(mapa)
 summary(hidro)
 #limites do mapa

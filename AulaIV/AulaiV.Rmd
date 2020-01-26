@@ -1,8 +1,9 @@
 ---
-title: "Aula 5 Gráficos"
+title: "Aula 4 Gráficos"
 author: "Carlos Tonhatti"
-date: " 22 abril 2019"
-output: ioslides_presentation
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
@@ -354,7 +355,7 @@ plot(airquality$date,airquality$Wind,type="l",col="red")
 
 
 
-## Dois conjuntos os mais com sobreposicao
+## Dois conjuntos os mais com sobreposição
 ```{r, eval=F, echo=T }
 par(mar=c(5,4,4,5))
 plot(Ozone~date, data=airquality,type="h",col="blue",
@@ -368,7 +369,7 @@ axis(4) # adiciona o eixo no lado 4
 mtext("Vento",side=4,line=3) # adiciona o titulo do lado do eixo
 ```
 
-## Dois conjuntos ou mais com sobreposicao
+## Dois conjuntos ou mais com sobreposição
 
 ```{r}
 par(mar=c(5,4,4,5))
@@ -434,6 +435,8 @@ text(locator(3),"Muito Ruim", adj=0)
 Não funciona no slide
 
 
+
+
 ## Plotly
 ```{r, echo=T, eval=F}
 library(plotly)
@@ -470,7 +473,7 @@ manipulate(
   type = picker("Points" = "p", "Line" = "l", "Step" = "s"),
   label = checkbox(TRUE, "Draw Labels"))
 ```
-
+Não funciona do slide
 
 # Cores 
 
@@ -577,19 +580,37 @@ plot(hidro,col="blue")
 ```
 
 ## Arquivos shapefile
-```{r, message=FALSE, warning=FALSE}
-require(maptools,  quietly = TRUE, warn.conflicts = FALSE)
-require(sp,  quietly = TRUE, warn.conflicts = FALSE)
-```
 
-```{r, echo=T, message=FALSE, warning=FALSE}
-mapa=readShapePoly("BRASIL")
-hidro=readShapeLines("hidrografia")
+```{r, echo=T, eval= F,message=FALSE, warning=FALSE}
+require(sp)
+require(maptools)
+
+require(rgdal)
+
+mapa<-readOGR("BRASIL.shp", verbose=FALSE)
+hidro=readOGR("hidrografia.shp",verbose=FALSE )
 #limites do mapa
 plot(mapa)
 par(new=T)
 plot(hidro,col="blue")
 ```
+
+## Arquivo shapefile
+```{r, echo=F, eval= T,message=FALSE, warning=FALSE}
+require(sp)
+require(maptools)
+
+require(rgdal)
+
+mapa<-readOGR("BRASIL.shp", verbose=FALSE)
+hidro=readOGR("hidrografia.shp",verbose=FALSE )
+#limites do mapa
+plot(mapa)
+par(new=T)
+plot(hidro,col="blue")
+```
+
+
 
 
 ## MUITOS GRÁFICOS
@@ -626,7 +647,7 @@ Ler capítulo 6 da apostila;
 
 Fazer tutorial “Criação e edição de gráficos”
 
-Fazer exercícios “Criação e edição de gráficos”
+Fazer exercícios “Gráficos simples”
 
 Leia a ajuda da função par ;
 

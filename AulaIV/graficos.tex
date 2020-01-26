@@ -20,7 +20,7 @@
 \usecolortheme{dolphin}
 \usefonttheme[onlysmall]{structurebold}
 
-\title[Linguagem R]{R para iniciantes\\ Aula 5 Gráficos}
+\title[Linguagem R]{R para iniciantes\\ Aula 4 Gráficos}
 \author {Carlos Henrique Tonhatti}
 \institute[Unicamp]{Universidade Estadual de Campinas}
 \date{}
@@ -122,7 +122,7 @@ Faça do jeito que o editor/revista pedir.
 \subsection{Dispositivos gráficos}
 
 \begin{frame}{Dispositivos gráficos no R}
-O R possui dois tipos de dispositivos gráficos:
+  Um dispositivo gráfico é ``para onde o gráfico vai'' e  R possui dois tipos de dispositivos gráficos:
 
 \begin{block}{Tela}
 x11() windows() quartz()  
@@ -145,7 +145,9 @@ dev.list() \\ \vspace{10pt}
 \# Fecha o dispositivo atual\\
 dev.off() \\ \vspace{10pt}   
   \end{block}
+   Sempre feche o dispositivo.
 \end{frame}
+
 
 \begin{frame}{Área de desenho de um dispositivo}
 \centering
@@ -188,6 +190,26 @@ barplot(x, \ldots)\\
 
 \pgfdeclareimage[width=8cm]{plot1}{plot1}
 \pgfuseimage{plot1}  
+\end{frame}
+
+\begin{frame}{Exemplo BoxPlot}
+  \texttt{> numeros<-rnorm(10000) \\
+    > boxplot(numeros)
+}
+\centering
+
+\pgfdeclareimage[width=8cm]{boxplot}{boxplot}
+\pgfuseimage{boxplot}  
+\end{frame}
+
+\begin{frame}{Exemplo Histograma}
+  \texttt{> numeros<-rnorm(10000) \\
+    > hist(numeros)
+}
+\centering
+
+\pgfdeclareimage[width=8cm]{histograma}{histograma}
+\pgfuseimage{histograma}  
 \end{frame}
 
 \begin{frame}{Detalhes função \textit{plot()}}
@@ -373,19 +395,7 @@ Alguns argumentos:
   
 \end{frame}
 
-\begin{frame}{Funções interativas}
-Possibilitam interação com um gráfico através do mouse.
 
-\begin{block}{Localizar um ponto}
-locator(n)  
-\end{block}
-\texttt{> plot(Ozone$\sim$date, data=airquality)\\
-> locator(n=2)\\
-\$x\\
-~[1] 115489104 113641840 \\ \vspace{10pt}
-\$y\\
-~[1] 117.0584 122.5218}
-  \end{frame}
 
 \section{Gráficos médios no R}
 \subsection{Esquemas de cores}
@@ -534,8 +544,8 @@ pch=16,col=c("blue","red"))}
 
   \begin{itemize}
   \item Ler capítulo 6 da apostila;
-  \item Fazer tutorial ``Criação e edição de gráficos''
-  \item Fazer exercícios ``Criação e edição de gráficos''
+  \item Fazer tutorial ``Criação e edição de gráficos'' da apostila
+  \item Fazer exercícios ``Gráficos Básicos'' no Swirl
   \end{itemize} \pause
 Mais?
 
@@ -552,3 +562,16 @@ Mais?
 \end{frame}
 \end{document}
   
+\begin{frame}{Funções interativas}
+Possibilitam interação com um gráfico através do mouse.
+
+\begin{block}{Localizar um ponto}
+locator(n)  
+\end{block}
+\texttt{> plot(Ozone$\sim$date, data=airquality)\\
+> locator(n=2)\\
+\$x\\
+~[1] 115489104 113641840 \\ \vspace{10pt}
+\$y\\
+~[1] 117.0584 122.5218}
+  \end{frame}
