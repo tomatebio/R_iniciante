@@ -87,6 +87,7 @@ demo(graphics)
 demo(image)
 demo(colors)
 
+
 require(sp)
 demo(gallery)
 
