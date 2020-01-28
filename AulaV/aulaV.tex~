@@ -35,15 +35,7 @@
 \end{frame}
 }
 
-\AtBeginSubsection[]
-{
-   \begin{frame}
-       \frametitle{Sumário}
 
-       \tableofcontents[currentsection,currentsubsection]
-       \setcounter{tocdepth}{2}
-   \end{frame}
-}
 
 
 \begin{document}
@@ -52,7 +44,7 @@
 
 %==================================================slide
 \begin{frame}
-  \frametitle{Dúvidas da última Aula?}
+  \frametitle{Dúvidas da última aula?}
 \end{frame}
 
 % cria o sumario

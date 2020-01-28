@@ -1,0 +1,31 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+Start each program with a description of what it does.
+
+Then load all required packages.
+
+Consider what working directory you are in when sourcing a script.
+
+Use comments to mark off sections of code.
+
+Put function definitions at the top of your file, or in a separate file if there are many.
+
+Name and style code consistently.
+
+Break code into small, discrete pieces.
+
+Factor out common operations rather than repeating them.
+
+Keep all of the source files for a project in one directory and use relative paths to access them.
+
+Keep track of the memory used by your program.
+
+Always start with a clean environment instead of saving the workspace.
+
+Keep track of session information in your project folder.
+
+Have someone else review your code.
+
+Use version control.
