@@ -8,7 +8,7 @@
 ## Funcao Condicional
 
 #par ou impar?
-a<-9
+a<-12
 if(a%%2==0){
  print("É par")
   }else{
@@ -16,7 +16,7 @@ if(a%%2==0){
   }
 
 #ifelse
-numero<- c(0,1,2,3,4,5,6,7,8)
+numero<- c(0,1,2,3,4,5,6,7,NA)
 
 ifelse(numero%%2==0,"par","impar")
 
@@ -29,15 +29,19 @@ for(i in 1:numero.alunos){
  medias[i]<-mean(alunos[i,])
 }
 
+medias
+
+for(banana in seq(1,20,3))
+        print(1*5)
 ##
 
-numero<-21
+numero<-40013
 aux<-numero-1
 primo<-TRUE
-while(primo==TRUE &aux >1){
+while(primo==TRUE & aux>1){
       if(numero%%aux==0){
           primo<-FALSE
-          
+
       }else{
 
           aux=aux-1
@@ -50,7 +54,7 @@ for(i in 1:100){
  print(i)
 }
 
-## Escopo de uma funcao 
+## Escopo de uma funcao
 media <-function(x)
     {
         soma=sum(x)
@@ -62,6 +66,7 @@ media <-function(x)
 
 ## Fora do escopo
 soma=sum(c(3,4,5))
+soma=1
 media2 <-function(x)
     {
          nobs=length(x)
@@ -148,7 +153,7 @@ system.time(isPrime(400001))
 system.time(Ehprimo(400001))
 
 
-# Melhorando a nossa funcao EhPrimo 
+# Melhorando a nossa funcao EhPrimo
 Ehprimo2<-function(numero){
 aux<-sqrt(numero)
 primo<-TRUE
@@ -161,15 +166,13 @@ while(primo==TRUE &aux>1){
 return(primo)
 }
 system.time(Ehprimo2(400001))
-
+system.time(Ehprimo(400001))
 
 FizzBuzz<-function(num){
     x<-seq(1,num)
-    xx <- x 
+    xx <- x
     xx[x %% 3 == 0] <- "Fizz"
     xx[x %% 5 == 0] <- "Buzz"
     xx[x %% 15 == 0] <- "FizzBuzz"
     return(xx)
 }
-
-

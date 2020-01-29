@@ -44,7 +44,12 @@ my_mean <- function(my_vector) {
    probabilidadePopulacinal<-
    probPopulacional<-
    
-   quandoComecarUmaPalavraColoqueEmMaiuscula
+   quandoComecarUmaPalavraColoqueEmMaiuscula  "CamelCase"
+   
+   separar_as_palavras_por_ "snake_case"
+    
+  
+   
     
 ## Não reutiluze os nomes, adicione sufixos. Padronize!
 
@@ -103,5 +108,17 @@ create.project("aulaCOMSOL", rstudio.project=T)
 
 
 
+
 ## Criar um . Rproj
+## Sistema do rstudio para criar projetos
 ## 
+## 
+## 
+## 
+## 
+## 
+
+
+
+
+
